@@ -1,4 +1,4 @@
-﻿name: exemple-crypto
+﻿name: exemple-forensic
 author: hamoncode
 category: crypto
 description: |
@@ -16,7 +16,5 @@ files:
 tags:
   - facile
 connection_info: "" # laisser vide, sera rempli ultérieurement
-requirements:
-    - "exemple-forensic"
-    - "exemple-web"
+requirements: []
 state: hidden
