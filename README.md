@@ -1,5 +1,6 @@
-Arborescence : 
+## Arborescence
 
+```text
 ├── categorie-1/
 │   ├── titre-chall-1/
 │   │   ├── defi/
@@ -10,16 +11,18 @@ Arborescence :
 │   │       ├── writeup.md
 │   │       └── solve.py
 │   ├── titre-chall-2/
-│   ...
+│   │   └── ...
 ├── categorie-2/
 │   └── titre-chall-1/
-│       ...
+│       └── ...
 └── categorie-3/
     └── ...
-    
-Format challenge.yml :
+```
 
-﻿name: exemple-challenge
+## Format `challenge.yml`
+
+```yaml
+name: exemple-challenge
 author: Author
 category: crypto
 description: |
@@ -27,9 +30,9 @@ description: |
 type: dynamic
 extra:
   initial: 500 # points de base
-  decay: 20        
+  decay: 20
   minimum: 100
-  function: logarithmic 
+  function: logarithmic
 flags:
   - FPS{exemple_de_flag}
 files:
@@ -38,6 +41,7 @@ tags:
   - facile
 connection_info: "" # laisser vide, sera rempli ultérieurement
 requirements:
-    - "chall-precedent-1"
-    - "chall-precedent-2"
+  - "chall-precedent-1"
+  - "chall-precedent-2"
 state: hidden
+```
