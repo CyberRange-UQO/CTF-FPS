@@ -1,0 +1,22 @@
+﻿name: exemple-crypto
+author: hamoncode
+category: crypto
+description: |
+  Texte montré aux participants. Markdown accepté.
+type: dynamic
+extra:
+  initial: 500
+  decay: 20        
+  minimum: 100
+  function: logarithmic 
+flags:
+  - FPS{exemple_de_flag}
+files:
+  - relative/path/to/files
+tags:
+  - facile
+connection_info: "" # laisser vide, sera rempli ultérieurement
+requirements:
+    - "exemple-forensic"
+    - "exemple-web"
+state: hidden
