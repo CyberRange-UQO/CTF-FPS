@@ -13,6 +13,7 @@ flags:
   - FPS{exemple_de_flag}
 files:
   - relative/path/to/files
+  - file_to_upload.txt
 tags:
   - facile
 connection_info: "" # laisser vide, sera rempli ultérieurement
