@@ -1,6 +1,15 @@
 ﻿name: exemple-crypto
+author: hamoncode
 category: crypto
-description: ""
+description: |
+  Texte montré aux participants. Markdown accepté.
 value: 100
-flags: []
+type: standard
+flags:
+  - FPS{exemple_de_flag}
 files: []
+tags:
+  - facile
+hints: []
+connection_info: ""
+state: hidden
