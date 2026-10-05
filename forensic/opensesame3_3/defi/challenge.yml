@@ -1,0 +1,34 @@
+﻿name: OpenSesame (3/3)
+author: Zlippy
+category: forensic
+
+description: |
+  Le programme n'est probablement pas un simple utilitaire de traitement de PDF. Son comportement, jusqu'ici discret, laisse penser qu'une opération bien plus préoccupante se déroule en arrière-plan.
+
+  Vous devez maintenant analyser le binaire afin de comprendre ses véritables intentions. **Quel protocole utilise-t-il pour communiquer avec l'extérieur, et sous quel compte se connecte-t-il au serveur distant ?**
+
+  Le diplomate pourrait-il être victime d'une opération d'espionnage ?
+
+  Flag attendu sous le format suivant : FPS{PROTOCOLE:USERNAME:MOT_DE_PASSE}
+
+type: dynamic
+extra:
+  initial: 500
+  decay: 20        
+  minimum: 100
+  function: logarithmic 
+
+flags:
+  - FPS{SFTP;dbg_svc;D#ld0!e86DKcoejFMskdnc}
+
+tags:
+  - Moyen
+
+connection_info: ""
+requirements:
+  prerequisites:
+    - "OpenSesame (1/3)"
+    - "OpenSesame (2/3)"
+  behavior: "hidden" 
+
+state: hidden
