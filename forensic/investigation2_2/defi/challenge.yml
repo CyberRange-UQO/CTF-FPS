@@ -1,0 +1,34 @@
+﻿name: Investigation (2/2)
+author: Zlippy
+category: forensic
+
+description: |
+  L'enquête continue...
+  
+  Un second disque dur vient d’être récupéré lors de l’enquête. Parmi les fichiers se trouve une archive chiffrée, mais impossible pour les enquêteurs de l’ouvrir.
+
+  L’un d’eux pense que le suspect aurait pu utiliser un mot de passe lié à ses habitudes personnelles…
+
+  À vous de jouer.
+
+
+type: dynamic
+extra:
+  initial: 500
+  decay: 20        
+  minimum: 100
+  function: logarithmic 
+
+flags:
+  - FPS{https://messervices.cyber.gouv.fr/documents-guides/anssi-guide-authentification_multifacteur_et_mots_de_passe.pdf}
+
+files:
+  - coffre_fort_fort.zip
+  - fiche_suspect.txt
+
+tags:
+  - Facile
+
+connection_info: ""
+requirements: []
+state: hidden
