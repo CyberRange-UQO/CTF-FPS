@@ -1,21 +1,46 @@
-﻿name: exemple-forensic
-author: hamoncode
-category: crypto
+name: N WHAT ?
+author: Duraink
+category: Forensics
 description: |
-  Texte montré aux participants. Markdown accepté.
+   Lors de mon enquête, j'ai réussi à obtenir un premier accès au SI de l'université. Avant d'aller plus loin, j'ai décidé d'effectuer une phase de reconnaissance du réseau à l'aide de **Nmap**.
+
+   Le scan m'a permis de récupérer plusieurs informations intéressantes sur les machines et services présents sur le réseau.
+
+   Étape 1 — Retrouver la commande
+
+   À partir des informations que je viens de te transmettre, saurais-tu retrouver **la commande Nmap exacte** que j'ai utilisée ?
+
+   Étape 2 — Compter les services
+
+   Maintenant que tu as retrouvé ma commande, à toi de mener l'enquête !
+
+   Analyse le réseau et détermine **combien de services sont exposés sur celui-ci**.
+
+   Étape 3 — Identifier le service vulnérable
+
+   Ton analyse du réseau révèle également la présence d'un **service vulnérable**.
+
+   Identifie :
+
+   * le service concerné ;
+   * sa version ;
+   * puis retrouve la **CVE correspondant à cette version**.
+
+    Format du flag : FPS{...}
+   Exemple : NBCTF{nmap_10.10.10.10_-PR_-n:10:CVE_XXXX-XXXX}
 type: dynamic
 extra:
-  initial: 500
-  decay: 20        
+  initial: 500 # points de base
+  decay: 20
   minimum: 100
-  function: logarithmic 
+  function: logarithmic
 flags:
-  - FPS{exemple_de_flag}
+  - FPS{nmap_192.168.10.12_sV_-p-:6:CVE_2026-63030}
 files:
   - relative/path/to/files
-  - file_to_upload.txt
+  - N WHAT.pcap
 tags:
   - facile
 connection_info: "" # laisser vide, sera rempli ultérieurement
-requirements: []
+requirements: ""
 state: hidden
