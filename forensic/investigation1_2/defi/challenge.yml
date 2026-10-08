@@ -1,0 +1,29 @@
+﻿name: Investigation (1/2)
+author: Zlippy
+category: forensic
+
+description: |
+  Un suspect vient d’être arrêté, mais son passé numérique reste un mystère. Les enquêteurs ont récupéré une clé USB qui semble vide… trop vide.
+
+  À vous d’analyser son contenu et de récupérer les données présentes sur le support !
+
+
+type: dynamic
+extra:
+  initial: 500
+  decay: 20        
+  minimum: 100
+  function: logarithmic 
+
+flags:
+  - FPS{Owowwowoow_deleted_files_arent_deleted???}
+
+files:
+  - copie_cle_usb.img
+
+tags:
+  - Facile
+
+connection_info: ""
+requirements: []
+state: hidden
