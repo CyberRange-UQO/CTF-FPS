@@ -1,0 +1,33 @@
+﻿name: OpenSesame (1/3)
+author: Zlippy
+category: forensic
+
+description: |
+  Un diplomate en poste à l'étranger signale depuis quelques jours un comportement étrange sur son ordinateur professionnel. Il affirme notamment que ses documents PDF mettent parfois quelques secondes de plus que d'habitude à s'ouvrir et que la machine semble brièvement « réfléchir » avant d'afficher le document.
+
+  Rien de suffisamment visible pour alerter l'utilisateur, mais suffisamment inhabituel pour attirer l'attention de l'équipe de sécurité. Vous êtes chargé d'analyser les artefacts récupérés sur la machine afin de déterminer ce qui se passe réellement lorsqu'un document PDF est ouvert.
+
+  **Quel programme est responsable de ce comportement ? Identifiez-le et fournissez son hash SHA-256.**
+
+  Flag attendu sous le format suivant : FPS{hash_sha256;nom_binaire.exe}
+
+
+type: dynamic
+extra:
+  initial: 500
+  decay: 20        
+  minimum: 100
+  function: logarithmic 
+
+flags:
+  - FPS{626c114395d21dd6d6c360191ec3d29d2e8117a2e404076e0d2977eedc1488c6;pdf_utils.exe}
+
+files:
+  - traces_forensique.tar.xz
+
+tags:
+  - Moyen
+
+connection_info: ""
+requirements: []
+state: hidden
