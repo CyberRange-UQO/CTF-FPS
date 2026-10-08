@@ -1,0 +1,31 @@
+name: Ebooks
+author: Duraink
+category: misc
+description: |
+  Une nouvelle piste vient de tomber entre mes mains.
+
+  En fouillant les affaires de la victime, j'ai trouvé un fichier eBook parmi ses documents personnels. Rien d'inhabituel au premier regard : un livre qu'elle semblait particulièrement apprécier.
+
+  Pourtant, lors de mon enquête, j'ais découvert que la victime avait l'habitude de dissimuler des informations dans des fichiers anodins, à l'abri des regards indiscrets.
+
+  Et si ce livre n'était pas seulement un livre ?
+
+  À toi de retrouver ce qui a été caché entre ses pages.
+
+  Format du flag : FPS{...}
+type: dynamic
+extra:
+  initial: 500 # points de base
+  decay: 20
+  minimum: 100
+  function: logarithmic
+flags:
+  - FPS{Brolin_est_un_super_flic_du_FBI}
+files:
+  - relative/path/to/files
+  - Ebooks.zip
+tags:
+  - facile
+connection_info: "" # laisser vide, sera rempli ultérieurement
+requirements: ""
+state: hidden
