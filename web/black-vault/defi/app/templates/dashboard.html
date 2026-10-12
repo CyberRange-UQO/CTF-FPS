@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Registre de conservation{% endblock %}
+{% block body_class %}registry-page{% endblock %}
+{% block content %}
+<header class="registry-heading">
+  <div><span class="eyebrow accent">BLACK VAULT / INDEX DE CONSULTATION ORDINAIRE</span><h1>Registre de conservation</h1><p>Document Services · {{ archive_meta.sector }}<span class="registry-divider" aria-hidden="true"> / </span>Consultation seule</p></div>
+  <dl class="terminal-details"><div><dt>Terminal</dt><dd>BV-021</dd></div><div><dt>Habilitation</dt><dd>{{ g.operator.clearance }}</dd></div></dl>
+</header>
+<section class="registry-search" aria-labelledby="search-heading">
+  <div class="registry-section-label"><h2 id="search-heading">Recherche dans le registre</h2><span class="eyebrow">01 / CONSULTATION</span></div>
+  <form class="search-form" method="get" action="{{ url_for('archives') }}" role="search">
+    <label for="registry-query">Référence d’archive ou identité administrative</label>
+    <div class="input-action"><input id="registry-query" name="q" maxlength="128" placeholder="Saisir une référence de conservation" aria-describedby="search-scope" required spellcheck="false"><button class="button button-primary" type="submit">Rechercher <span aria-hidden="true">→</span></button></div>
+    <p id="search-scope" class="fineprint">Recherche limitée aux métadonnées autorisées du poste archiviste.</p>
+  </form>
+</section>
+<div class="registry-layout">
+  <section class="document-register" aria-labelledby="documents-heading">
+    <div class="registry-section-label"><div><span class="eyebrow muted">RÉPERTOIRE DOCUMENTAIRE</span><h2 id="documents-heading">Extraits de consultation</h2></div><span class="register-count">{{ public_documents | length }} pièces</span></div>
+    <table class="registry-table" role="table">
+      <caption>Pièces ordinaires du dossier {{ archive_meta.ref }} · Indexé le {{ archive_meta.indexed }}</caption>
+      <thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">Référence / document</th><th scope="col" role="columnheader">Type de conservation</th><th scope="col" role="columnheader">Consultation</th><th scope="col" role="columnheader">État</th></tr></thead>
+      <tbody role="rowgroup">
+        {% for doc in public_documents %}
+        <tr role="row">
+          <th scope="row" role="rowheader"><span class="document-reference">{{ doc.code }}</span><a href="{{ url_for('reader', archive=archive_meta.ref, file=doc.file) }}">{{ doc.label }} <span aria-hidden="true">↗</span></a><span class="document-filename">{{ doc.file }}</span></th>
+          <td role="cell"><span class="mobile-field" aria-hidden="true">Conservation</span>{{ doc.kind }}</td>
+          <td role="cell"><span class="mobile-field" aria-hidden="true">Consultation</span>{{ g.operator.clearance }}<small>Extrait ordinaire</small></td>
+          <td role="cell"><span class="mobile-field" aria-hidden="true">État</span><span class="document-status">INDEXÉ</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="register-foot"><span>Lecture seule · {{ archive_meta.sector }}</span><a href="{{ url_for('archive_page', archive_ref=archive_meta.ref) }}">Métadonnées du dossier <span aria-hidden="true">→</span></a></div>
+  </section>
+  <aside class="registry-context" aria-label="Conditions de conservation et de consultation">
+    <section><span class="eyebrow accent">CADRE DE CONSERVATION</span><h2>Continuité documentaire</h2><p>Les pièces d’audit restent conservées lorsque le registre d’identité est modifié.</p><dl class="registry-facts"><div><dt>État du dossier</dt><dd>{{ archive_meta.status }}</dd></div><div><dt>Dernière indexation</dt><dd>{{ archive_meta.indexed }}</dd></div></dl></section>
+    <section><span class="eyebrow accent">INTÉGRITÉ DES PIÈCES</span><h2>Consultation sans mutation</h2><p>Le poste ne permet ni modification ni suppression des documents. Une erreur de lecture n’altère pas leur conservation.</p></section>
+    <section><span class="eyebrow accent">POSTE ARCHIVISTE / BV-021</span><dl class="registry-facts"><div><dt>Opérateur</dt><dd>{{ g.operator.id }}</dd></div><div><dt>Fonction</dt><dd>{{ g.operator.role }}</dd></div><div><dt>Niveau de consultation</dt><dd>{{ g.operator.clearance }}</dd></div></dl></section>
+    <section class="registry-procedure"><span class="eyebrow accent">PROCÉDURE / KB-VAULT-021</span><h2>Contrats de référence</h2><p>Contrôle d’accès et interprétation documentaire : responsabilités des deux composants.</p><a href="{{ url_for('documentation') }}">Consulter la procédure <span aria-hidden="true">→</span></a></section>
+  </aside>
+</div>
+<p class="registry-confidentiality">DIFFUSION INTERNE · Les extraits affichés relèvent de l’habilitation {{ g.operator.clearance }}. Les autres pièces ne sont pas publiées dans ce registre.</p>
+{% endblock %}

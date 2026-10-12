@@ -1,0 +1,18 @@
+VANTA//SYSTEMS — INVENTAIRE BV-2147-1057
+État : RETAINED · Périmètre : ARCHIVE-1
+
+COMPARTIMENT PUBLIC — public/
+01  summary.txt          Synthèse administrative
+02  inventory.txt        Inventaire des compartiments
+03  migration-note.txt   KB-VAULT-021 / Contrats de référence
+
+COMPARTIMENT SEALED — sealed/
+État : SEALED · Classification : BLACK
+Pièces conservées : 04
+Index local : convention de conservation KB-VAULT-021
+Métadonnées détaillées : non publiées dans l'index ordinaire
+
+Le compartiment SEALED est conservé dans le même dossier d'archive.
+Son index est distinct du catalogue public ; les noms de pièces ne sont
+pas exportés dans la recherche ARCHIVE-1.
+Le Document Renderer ouvre les références à partir de public/.

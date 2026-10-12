@@ -1,0 +1,3 @@
+{% extends 'base.html' %}
+{% block title %}Requête interrompue{% endblock %}
+{% block content %}<section class="panel error-panel"><span class="eyebrow accent">BLACK VAULT / {{ code }}</span><h1>Requête interrompue.</h1><p>{{ message }}</p><a class="button button-primary" href="{{ url_for('dashboard') if g.operator else url_for('login') }}">Retour au portail →</a></section>{% endblock %}

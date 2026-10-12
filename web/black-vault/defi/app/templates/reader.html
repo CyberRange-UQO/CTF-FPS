@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Lecteur documentaire{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='reader.js') }}" defer></script>{% endblock %}
+{% block content %}
+<div class="page-heading"><div><span class="eyebrow accent">03 / DOCUMENT RENDERER</span><h1>Consulter une pièce.</h1><p>Archive {{ archive_meta.ref }} · Références relatives au compartiment public/.</p></div><span class="badge">CONSULTATION SEULE</span></div>
+<div class="reader-layout"><aside class="panel document-index"><span class="eyebrow">EXTRAITS ORDINAIRES</span>{% for doc in public_documents %}<a href="{{ url_for('reader', archive=archive_meta.ref, file=doc.file) }}"><strong>{{ doc.label }}</strong><small>{{ doc.file }}</small></a>{% endfor %}<a class="text-link" href="{{ url_for('archive_page', archive_ref=archive_meta.ref) }}">Métadonnées du dossier →</a><a class="text-link" href="{{ url_for('documentation') }}">KB-VAULT-021 →</a></aside><div><section class="panel"><form id="reader-form" method="get" action="{{ url_for('reader') }}" data-endpoint="{{ url_for('preview_api', archive_ref=archive_meta.ref) }}"><label for="file">Référence documentaire <code>file</code></label><div class="input-action"><input id="file" name="file" value="{{ initial_file }}" maxlength="1024" required spellcheck="false"><button class="button button-primary" type="submit">Lire →</button></div></form><p class="request-address">GET <a id="request-url" href="{{ url_for('preview_api', archive_ref=archive_meta.ref, file=initial_file) }}">{{ url_for('preview_api', archive_ref=archive_meta.ref, file=initial_file) }}</a></p><noscript><p>Ouvrez le lien GET pour consulter la réponse documentaire.</p></noscript></section><section class="panel response-panel spaced" id="response-panel" data-state="idle" aria-busy="false"><div class="terminal-header"><span class="eyebrow">DOCUMENT PREVIEW</span><span class="badge" id="response-state">EN ATTENTE</span></div><p id="reader-feedback" class="request-feedback" role="status" aria-live="polite">Sélectionnez une référence documentaire. La réponse conserve la référence de lecture et le code de traitement.</p><pre id="document-content" tabindex="0"></pre><div class="terminal-foot"><span id="document-meta">LECTURE SEULE</span><span>VANTA / DOCUMENT RENDERER</span></div></section></div></div>
+<section class="document-register restitution-journal spaced" aria-labelledby="restitution-heading">
+  <div class="registry-section-label"><h2 id="restitution-heading">Journal de restitution documentaire</h2><span class="register-count">2 consultations</span></div>
+  <table class="registry-table restitution-table" role="table">
+    <caption>Archive {{ archive_meta.ref }} · Extrait historique · Références telles que transmises dans l’URL de consultation.</caption>
+    <thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">Consultation</th><th scope="col" role="columnheader">Référence transmise</th><th scope="col" role="columnheader">Document restitué</th><th scope="col" role="columnheader">Restitution</th></tr></thead>
+    <tbody role="rowgroup">
+      <tr role="row">
+        <th scope="row" role="rowheader"><span class="document-reference">BV-CONS-031</span></th>
+        <td role="cell"><span class="mobile-field" aria-hidden="true">Transmise</span><code>inventory.txt</code></td>
+        <td role="cell"><span class="mobile-field" aria-hidden="true">Restitué</span><code>inventory.txt</code></td>
+        <td role="cell"><span class="mobile-field" aria-hidden="true">Restitution</span><span class="document-status">200 / RESTITUÉ</span></td>
+      </tr>
+      <tr role="row">
+        <th scope="row" role="rowheader"><span class="document-reference">BV-CONS-032</span></th>
+        <td role="cell"><span class="mobile-field" aria-hidden="true">Transmise</span><code>inventory%252Etxt</code></td>
+        <td role="cell"><span class="mobile-field" aria-hidden="true">Restitué</span><code>inventory.txt</code></td>
+        <td role="cell"><span class="mobile-field" aria-hidden="true">Restitution</span><span class="document-status">200 / RESTITUÉ</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+{% endblock %}
