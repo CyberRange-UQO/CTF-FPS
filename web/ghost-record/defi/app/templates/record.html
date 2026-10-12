@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Dossier {{ record.id }}{% endblock %}
+{% block content %}
+<div class="page-heading"><div><p class="eyebrow accent">REGISTRE CITOYEN / CONSULTATION</p><h1>Dossier #{{ record.id }}</h1><p class="muted">Fiche administrative · EIDOLON / Noctis-9</p></div><span class="badge{% if record.status == 'ERASED' %} badge-pink{% else %} badge-active{% endif %}{% if record.id == 1057 and record.status == 'ERASED' %} record-status-reveal{% endif %}">{{ record.status }}</span></div>
+<section class="panel record-panel" aria-labelledby="record-title">
+  <div class="panel-heading"><span class="eyebrow">IDENTITÉ DU TITULAIRE</span><span class="system-label">EID-{{ record.id }}</span></div>
+  <h2 id="record-title" class="record-alias">{{ record.alias }}</h2>
+  <dl class="data-grid record-data"><div><dt>Identifiant du dossier</dt><dd>{{ record.id }}</dd></div><div><dt>Date de naissance</dt><dd id="birth-date">{{ record.birth_date.strftime('%d/%m/%Y') }}</dd></div><div><dt>Secteur d'enregistrement</dt><dd>{{ record.sector }}</dd></div><div><dt>État du dossier</dt><dd>{{ record.status }}</dd></div>{% if record.operation %}<div><dt>Référence administrative</dt><dd>{{ record.operation }}</dd></div>{% endif %}</dl>
+  <div class="record-summary"><h3>Résumé administratif</h3><p>{{ record.summary }}</p></div>
+  {% if record.has_report %}
+  <section class="export-section" aria-labelledby="export-title"><div><p class="eyebrow">ARCHIVES / EIDOLON LEGACY V2.1</p><h3 id="export-title">Pièce administrative archivée</h3><p class="muted">Rapport confidentiel · PDF sous archive ZIP protégée.</p></div><div class="export-actions"><a class="button button-primary export-button" href="{{ url_for('export', record_id=record.id) }}">Exporter le rapport <span aria-hidden="true">↓</span></a><details class="export-help"><summary><span class="help-icon" aria-hidden="true">?</span> Aide à l'export</summary><div class="help-content"><h4>EIDOLON — Comment ouvrir mes archives ?</h4><p>Les archives créées par <strong>EIDOLON Legacy v2.1</strong> sont protégées par un mot de passe dérivé automatiquement de la <strong>date de naissance du titulaire</strong>. Format : <code>AAAAMMJJ</code>.</p></div></details></div></section>
+  {% endif %}
+</section>
+<p class="fineprint">Les informations sont présentées dans leur dernier état connu du registre.</p>
+{% endblock %}

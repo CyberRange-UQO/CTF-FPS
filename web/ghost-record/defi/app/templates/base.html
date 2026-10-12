@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>{% block title %}EIDOLON{% endblock %} · VANTA Systems</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='vanta.css') }}">
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="shell{% if not g.user %} shell-public{% endif %}">
+    <aside class="sidebar" aria-label="Portail EIDOLON">
+      <a class="brand" href="{{ url_for('dashboard') if g.user else url_for('login') }}" aria-label="VANTA Systems — Accueil">
+        <span class="brand-mark" aria-hidden="true">V<span>//</span></span>
+        <span>VANTA<span class="brand-sub">SYSTEMS</span></span>
+      </a>
+      <div class="product"><span class="eyebrow">IDENTITY NETWORK</span><strong>EIDOLON</strong><span>Portail citoyen</span></div>
+      {% if g.user %}
+      <nav class="navigation" aria-label="Navigation principale">
+        <a href="{{ url_for('dashboard') }}" {% if request.endpoint == 'dashboard' %}aria-current="page"{% endif %}><span aria-hidden="true">01</span> Vue d'ensemble</a>
+        <a href="{{ url_for('record', record_id=g.user.record_id) }}" {% if request.endpoint == 'record' %}aria-current="page"{% endif %}><span aria-hidden="true">02</span> Mon dossier</a>
+        <a href="{{ url_for('notifications') }}" {% if request.endpoint == 'notifications' %}aria-current="page"{% endif %}><span aria-hidden="true">03</span> Notifications {% if request.endpoint != 'notifications' %}<span class="nav-count" aria-label="1 nouveau message">1</span>{% endif %}</a>
+      </nav>
+      {% endif %}
+      <div class="sidebar-foot"><span class="status-dot" aria-hidden="true"></span> NODE : NOCTIS-9<br><span class="muted">Réseau citoyen · EID v2.1</span></div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <span class="eyebrow">EIDOLON <span class="muted">/</span> CITIZEN SERVICES</span>
+        {% if g.user %}
+        <div class="account"><span class="account-name">{{ g.user.username }}</span><form action="{{ url_for('logout') }}" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="button button-quiet" type="submit">Déconnexion</button></form></div>
+        {% else %}<span class="badge">ACCÈS CITOYEN</span>{% endif %}
+      </header>
+      <main id="main" class="main" tabindex="-1">{% block content %}{% endblock %}</main>
+      <footer class="footer"><span>VANTA Systems © 2147</span><span>Votre identité. Notre propriété.</span></footer>
+    </div>
+  </div>
+</body>
+</html>

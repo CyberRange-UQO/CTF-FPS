@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Notifications{% endblock %}
+{% block content %}
+<div class="page-heading"><div><p class="eyebrow accent">MESSAGERIE ADMINISTRATIVE / 03</p><h1>Notifications</h1><p class="muted">Messages du service des identités associés à votre compte.</p></div><span class="badge">{{ notifications|length }} MESSAGES</span></div>
+<div class="notification-list">
+{% for note in notifications %}
+<article class="panel notification{% if note.status == 'MAINTENANCE' %} notification-incident{% endif %}">
+  <div class="panel-heading"><span class="eyebrow">EIDOLON / {{ note.code }}</span><span class="badge{% if note.status == 'MAINTENANCE' %} badge-pink{% endif %}">{{ note.status }}</span></div>
+  <h2>{{ note.title }}</h2><p>{{ note.body }}</p>
+  <p class="fineprint">{{ note.created_at }} · Direction des identités / Noctis-9</p>
+</article>
+{% endfor %}
+</div>
+{% endblock %}

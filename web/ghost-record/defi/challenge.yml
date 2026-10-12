@@ -1,0 +1,38 @@
+name: GHOST RECORD
+author: Samuel Boisneault
+category: web
+description: |
+  À Noctis-9, VANTA Systems affirme que MIRA-07 n'a jamais existé.
+  STATIC a retrouvé son ancien badge d'identité numérique dans un terminal
+  de recyclage. Une copie est jointe à cette transmission.
+  VANTA l'a révoqué. Il reste pourtant une trace à examiner.
+
+  Examinez le document. STATIC vous fournit également un accès citoyen
+  au portail EIDOLON. Retrouvez une preuve de l'existence de MIRA-07
+  dans les systèmes VANTA.
+
+  Identifiant : `runner.1042`
+  Mot de passe : `vanta-guest-2147`
+
+  Ouvrez `/login` sur l'instance fournie par l'organisation.
+  Un lecteur QR hors ligne est joint : ouvrez `qr-reader.html` dans Firefox,
+  puis choisissez l'image du badge. Aucune installation n'est nécessaire.
+  Pour ouvrir les archives protégées, utilisez 7-Zip (`7z`), fourni avec Kali.
+  Toutes les identités présentées sont fictives.
+value: 150
+type: dynamic
+extra:
+  initial: 150
+  decay: 20
+  minimum: 50
+  function: logarithmic
+flags:
+  - FPS{eidolon_silence_is_not_a_sync_error}
+tags:
+  - easy
+  - web
+files:
+  - files/mira-07-badge.png
+  - files/qr-reader.html
+connection_info: ""
+state: hidden
