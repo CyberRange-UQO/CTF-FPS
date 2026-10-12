@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Catalogue des sources{% endblock %}
+{% block content %}
+<div class="page-heading"><div><span class="eyebrow accent">02 / DOCUMENT CATALOG</span><h1>Catalogue des sources</h1><p>Documents de référence pour les opérations courantes.</p></div><span class="badge">03 RESSOURCES</span></div>
+<div class="catalog-intro"><span class="status-dot" aria-hidden="true"></span> SOURCE : <code>mirror-catalog</code><span>Index du 16/10/2147 · ressources standard</span></div>
+<div class="source-grid">{% for source in sources %}<article class="panel source-card"><div class="panel-heading"><span class="eyebrow">{{ source.id }}</span><span class="badge badge-active">INTERNAL</span></div><div class="document-icon" aria-hidden="true">▤</div><h2>{{ source.title }}</h2><p>{{ source.description }}</p><dl><dt>Type de contenu</dt><dd>{{ source.kind }}</dd><dt>Dernière synchronisation</dt><dd>{{ source.synced }}</dd><dt>Adresse de la ressource</dt><dd class="source-url"><code>http://mirror-catalog:9080{{ source.path }}</code></dd></dl><a class="button button-primary" href="{{ url_for('preview', url='http://mirror-catalog:9080' ~ source.path) }}">Prévisualiser <span aria-hidden="true">↗</span></a></article>{% endfor %}</div>
+<div class="notice"><span class="notice-mark" aria-hidden="true">i</span><div><strong>Le document reste chez sa source.</strong><p>La prévisualisation demande une copie de consultation via MIRROR GATE. Aucune requête du navigateur n'est envoyée directement au service documentaire.</p></div></div>
+{% endblock %}

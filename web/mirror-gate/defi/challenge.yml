@@ -1,0 +1,39 @@
+name: MIRROR GATE
+author: Samuel Boisneault
+category: web
+description: |
+  Le signalement de MIRA-07 mène à un périmètre absent des registres ordinaires.
+  STATIC a obtenu un poste opérateur sur MIRROR GATE, la console de consultation
+  documentaire de VANTA. Ses sources restent sur leurs services d'origine,
+  tandis que le portail offre une fenêtre unique sur les ressources distantes.
+  Les synchronisations laissent des traces, même lorsque les documents
+  n'apparaissent pas dans le catalogue standard.
+
+  Les outils de récupération documentaire ont évolué. Une politique de sécurité
+  récemment déployée encadre désormais les sources approuvées. Le référentiel
+  opérateur conserve les informations nécessaires au suivi des consultations
+  et des synchronisations.
+
+  **Objectif :** retrouver l'identifiant de preuve d'une allocation liée à
+  l'identité effacée de MIRA-07.
+
+  **Compte opérateur :** `operator.mg-041` / `MG-041-2147`.
+  Fonction : Infrastructure Monitoring Operator · Habilitation : OPS-1.
+
+  Ouvrez l'instance fournie par l'organisation. Toutes les identités sont fictives.
+type: dynamic
+extra:
+  initial: 300
+  decay: 20
+  minimum: 100
+  function: logarithmic
+flags:
+  - FPS{mirror_gate_ng_r_still_active}
+files: []
+tags:
+  - medium-plus
+  - web
+connection_info: ""
+requirements:
+  - "Phantom Badge"
+state: hidden

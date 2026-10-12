@@ -1,0 +1,3 @@
+{% extends 'base.html' %}
+{% block title %}Ressource indisponible{% endblock %}
+{% block content %}<section class="panel error-panel"><span class="eyebrow accent">MIRROR GATE / HTTP {{ code }}</span><h1>Ressource indisponible</h1><p>Cette demande ne peut pas être traitée par le portail.</p><a class="button button-primary" href="{{ url_for('dashboard') }}">Retour à la vue d'ensemble →</a></section>{% endblock %}

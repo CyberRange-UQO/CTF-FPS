@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  {% if g.operator %}<meta name="csrf-token" content="{{ csrf_token() }}">{% endif %}
+  <title>{% block title %}MIRROR GATE{% endblock %} · VANTA//SYSTEMS</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='mirror.css') }}">
+  {% block scripts %}{% endblock %}
+</head>
+<body>
+<a class="skip-link" href="#main">Aller au contenu</a>
+<div class="shell{% if not g.operator %} shell-public{% endif %}">
+  <aside class="sidebar" aria-label="Portail MIRROR GATE">
+    <a class="brand" href="{{ url_for('dashboard') if g.operator else url_for('login') }}"><span class="brand-mark" aria-hidden="true">V<span>//</span></span><span>VANTA<span class="brand-sub">SYSTEMS</span></span></a>
+    <div class="product"><span class="eyebrow">RESOURCE OBSERVABILITY</span><strong>MIRROR GATE</strong><span>Console de consultation documentaire</span></div>
+    {% if g.operator %}<nav class="navigation" aria-label="Navigation principale">
+      {% for endpoint, number, label in [('dashboard','01',"Vue d'ensemble"),('catalog','02','Catalogue des sources'),('preview','03','Prévisualisation'),('journal','04','Journal de synchronisation')] %}
+      <a href="{{ url_for(endpoint) }}" {% if request.endpoint == endpoint %}aria-current="page"{% endif %}><span>{{ number }}</span>{{ label }}</a>
+      {% endfor %}
+    </nav>
+    <a class="support-link" href="{{ url_for('support') }}" {% if request.endpoint == 'support' %}aria-current="page"{% endif %}><span aria-hidden="true">?</span> Documentation opérateur ↗</a>
+    <div class="sidebar-note"><span class="eyebrow">POSTE OPÉRATEUR</span><strong>{{ g.operator.id }}</strong><span>{{ g.operator.function }}</span><span class="badge badge-active">{{ g.operator.clearance }} / CONSULTATION STANDARD</span></div>{% endif %}
+    <div class="sidebar-foot"><span class="status-dot" aria-hidden="true"></span> NOCTIS-9 / MG-03<br><span>Document infrastructure · v3.0</span></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><div><span class="eyebrow">VANTA INFRASTRUCTURE</span><span class="topbar-path">/ DOCUMENT SERVICES / MIRROR GATE</span></div>{% if g.operator %}<div class="account"><span class="account-id">{{ g.operator.id }}</span><span class="badge">{{ g.operator.clearance }}</span><form action="{{ url_for('logout') }}" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="button button-quiet" type="submit">Déconnexion</button></form></div>{% else %}<span class="badge">ACCÈS PROFESSIONNEL</span>{% endif %}</header>
+    <main id="main" class="main" tabindex="-1">{% block content %}{% endblock %}</main>
+    <footer class="footer"><span>VANTA//SYSTEMS © 2147 · Noctis-9</span><span>La continuité fait autorité.</span></footer>
+  </div>
+</div>
+</body>
+</html>
