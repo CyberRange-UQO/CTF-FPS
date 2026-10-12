@@ -1,0 +1,30 @@
+name: ROOT OF TRUST
+author: Samuel Boisneault
+category: web
+description: |
+  Les archives ne suffisent pas : VANTA peut encore nier leur provenance.
+  ROOT OF TRUST certifie les dossiers d'audit de sa propre infrastructure.
+  Votre mission est d'obtenir une divulgation certifiée de l'opération SILENCE.
+  L'autorité ROOT-AUDIT exige des requêtes signées.
+
+  STATIC a récupéré dans BLACK VAULT le matériel de récupération de cette
+  autorité. Présentez une preuve cohérente : VANTA devra certifier les
+  événements de son propre registre.
+
+  Ouvrez `/` sur l'instance fournie par l'organisation.
+  Toutes les identités et divulgations présentées sont fictives.
+type: dynamic
+extra:
+  initial: 500
+  decay: 20
+  minimum: 100
+  function: logarithmic
+flags:
+  - FPS{root_of_trust_signed_the_truth}
+files: []
+tags:
+  - web
+  - difficile
+connection_info: ""
+requirements: ["BLACK VAULT"]
+state: hidden

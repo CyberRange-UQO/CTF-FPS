@@ -1,0 +1,13 @@
+# Allowlist: no private configuration, tests or organizer documentation in context.
+**
+!Dockerfile
+!requirements.txt
+!app/
+!app/**
+app/**/__pycache__/
+app/**/*.pyc
+app/**/*.pyo
+app/**/.env
+app/**/.env.*
+app/**/*.pem
+app/**/*.key
