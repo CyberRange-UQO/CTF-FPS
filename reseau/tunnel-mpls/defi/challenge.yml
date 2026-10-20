@@ -1,0 +1,36 @@
+name: tunnel-mpls
+author: Herastique - Rémi Pantzer
+category: Réseau
+description: |
+  Vous avez un acces (SSH) a une machine posee sur un lien du coeur MPLS d'un
+  operateur, entre le routeur P et le PE2. Le client CLIENT-C est parfaitement
+  isole dans sa VRF... mais le PE fait aveuglement confiance aux paquets DEJA
+  ETIQUETES qu'il recoit sur ce lien.
+
+  A l'aide de ce que vous avez decode dans le defi "etiquettes" (label VPN,
+  adresses des sites), forgez du trafic MPLS pour atteindre le serveur interne
+  isole de CLIENT-C (API admin en UDP/5000) et recuperez son secret.
+
+  Acces : `ssh root@192.168.10.100 -p 1346` (mot de passe `MplsSpoof2026`).
+  Voir `/root/LISEZMOI.txt` et `/root/inject.py`.
+
+  Le flag est au format `FPS{...}`.
+type: dynamic
+extra:
+  initial: 500
+  decay: 20
+  minimum: 200
+  function: logarithmic
+flags:
+  - FPS{label_spoofing_mpls_traverse_l_isolation_vrf}
+files: []
+tags:
+  - Expert
+  - reseau
+  - mpls
+  - vrf
+  - label-spoofing
+connection_info: "ssh root@192.168.10.100 -p 1346"
+requirements:
+  - etiquettes
+state: visible

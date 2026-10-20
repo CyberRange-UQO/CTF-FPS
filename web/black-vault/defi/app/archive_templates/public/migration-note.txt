@@ -1,0 +1,32 @@
+KB-VAULT-021 — CONTRATS DE RÉFÉRENCE DOCUMENTAIRE
+VANTA//SYSTEMS · Document Services / Noctis-9
+Révision 2.3 · 16.10.2147 · Exploitation documentaire
+
+1. Organisation documentaire
+Chaque archive possède un compartiment public/ pour les extraits ordinaires
+et un compartiment frère sealed/ pour les pièces de conservation classifiées.
+Le lecteur documentaire utilise public/ comme base de consultation.
+Les index locaux de conservation portent le nom conventionnel manifest.json.
+Ils ne sont pas agrégés au catalogue des extraits ordinaires.
+
+2. Responsabilités de service
+Vault Access Controller maintient les règles d'admission des références
+et les habilitations documentaires. Document Renderer assure la résolution
+et la restitution des pièces du dossier. Ces responsabilités sont suivies
+par deux équipes distinctes de Document Services.
+L'état RETAINED décrit la conservation ; il ne constitue pas une habilitation.
+
+3. Incidents de consultation
+Des anomalies de résolution ont été signalées lors de consultations par
+référence. Pour un diagnostic, conserver la forme exacte de la référence
+soumise, le code de traitement et la référence figurant dans la réponse.
+Rapprocher le résultat des conventions de compartiment et de l'index local.
+PATH_REFERENCE_REJECTED indique un refus d'admission documentaire.
+Une référence admise peut recevoir un refus de lecture ou ne désigner aucune
+pièce disponible ; relever le code retourné sans modifier les documents.
+
+4. Conservation et périmètre
+La lecture est limitée au dossier d'archive autorisé par une frontière
+filesystem indépendante. L'autorisation documentaire ne remplace pas ce
+confinement. Les erreurs de lecture n'altèrent ni les pièces ni leur état
+de conservation. Ne pas renommer les pièces ni déplacer les index locaux.

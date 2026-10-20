@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  {% if g.operator %}<meta name="csrf-token" content="{{ csrf_token() }}">{% endif %}
+  <title>{% block title %}BLACK VAULT{% endblock %} · VANTA//SYSTEMS</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='vault.css') }}">
+  {% block scripts %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+<a class="skip-link" href="#main">Aller au contenu</a>
+<div class="shell">
+  <aside class="sidebar" aria-label="Portail BLACK VAULT">
+    <a class="brand" href="{{ url_for('dashboard') if g.operator else url_for('login') }}"><span class="brand-mark" aria-hidden="true">V<span>//</span></span><span>VANTA<small>SYSTEMS</small></span></a>
+    <div class="product"><span class="eyebrow">CLASSIFIED ARCHIVE SERVICES</span><strong>BLACK VAULT</strong><span>Conservation · Intégrité · Continuité</span></div>
+    {% if g.operator %}
+    <nav class="navigation" aria-label="Navigation principale">
+      {% for endpoint, number, label in [('dashboard','01',"Vue d'ensemble"),('archives','02','Recherche d’archives'),('reader','03','Lecteur documentaire'),('diagnostics','04','Pont de diagnostic'),('documentation','05','Documentation')] %}
+      <a href="{{ url_for(endpoint) }}" {% if request.endpoint == endpoint or (endpoint == 'archives' and request.endpoint == 'archive_page') %}aria-current="page"{% endif %}><span>{{ number }}</span>{{ label }}</a>
+      {% endfor %}
+    </nav>
+    <div class="operator-card"><span class="eyebrow">POSTE ARCHIVISTE / BV-021</span><strong>{{ g.operator.id }}</strong><span>{{ g.operator.role }}</span><span class="badge">{{ g.operator.clearance }}</span></div>
+    {% else %}<div class="restricted-note"><span class="eyebrow">PÉRIMÈTRE RESTREINT</span><p>Les archives demeurent.<br>Les habilitations décident.</p></div>{% endif %}
+    <div class="sidebar-foot"><span class="status-dot" aria-hidden="true"></span> NOCTIS-9 / BV-04<br><span>Archive continuity network · 2.1</span></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><div class="breadcrumb"><span class="eyebrow">VANTA INFRASTRUCTURE</span><span>/ DOCUMENT SERVICES</span></div>{% if g.operator %}<div class="account"><span class="badge badge-muted">SESSION ARCHIVISTE</span><form action="{{ url_for('logout') }}" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="button button-quiet" type="submit">Déconnexion ↗</button></form></div>{% else %}<span class="badge">ACCÈS PROFESSIONNEL</span>{% endif %}</header>
+    <main id="main" class="main" tabindex="-1">{% block content %}{% endblock %}</main>
+    <footer class="footer"><span>VANTA//SYSTEMS © 2147 · Noctis-9</span><span>Ce qui disparaît reste conservé.</span></footer>
+  </div>
+</div>
+</body>
+</html>

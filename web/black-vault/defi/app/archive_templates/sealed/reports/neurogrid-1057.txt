@@ -1,0 +1,42 @@
+VANTA//SYSTEMS — NEUROGRID
+RAPPORT OPÉRATIONNEL NG-1057-AUDIT
+Classification : BLACK · Diffusion : conservation interne
+Secteur : Noctis-9 · Archive : BV-2147-1057
+
+OBJET
+Contrôle de continuité de l'instance NG-R-1057 après modification du registre
+d'identité EIDOLON. NEUROGRID constitue une infrastructure de calcul utilisant
+des processus cognitifs humains comme ressources allouées. L'unité de suivi
+est l'instance d'allocation, distincte de l'identité administrative du sujet.
+
+RATTACHEMENT
+Instance : NG-R-1057
+Sujet enregistré : MIRA-07 / EID-1057
+Ancienne affectation : sous-traitance de contrôle d'intégrité des données.
+Le signalement initial concernait des anomalies du registre EIDOLON.
+Aucune connaissance préalable du dispositif NEUROGRID n'est établie dans
+les remontées du sujet.
+
+CONTINUITÉ
+La directive SIL-4/2147-07 a ordonné l'effacement administratif intentionnel
+d'EID-1057. L'opération n'a pas interrompu l'allocation NG-R-1057.
+État opérationnel : ACTIVE.
+Aucun mécanisme de désengagement autonome du sujet n'est disponible.
+La conservation du dossier demeure obligatoire malgré le statut ERASED.
+
+OBSERVATIONS
+Des réponses conscientes non sollicitées persistent de manière intermittente.
+Ces épisodes de lucidité ne modifient pas le statut d'allocation. Leur suivi
+relève exclusivement du pont VANTA-NG-DIAGNOSTIC ; utiliser la pièce de
+diagnostic référencée dans le manifeste pour l'autorisation du canal.
+Ce canal observe l'instance et n'autorise aucune action de désengagement.
+
+PÉRIMÈTRE
+Des observations comparables existent sur d'autres instances humaines du
+même pool. La liste nominative consolidée n'est pas jointe à cet extrait.
+Le devenir physique des sujets n'est pas documenté par cette procédure.
+
+CONSERVATION
+Maintenir les preuves centrales et le matériel de récupération de conformité
+dans les circuits d'audit prévus. Toute modification d'un registre public est
+sans effet sur les obligations de conservation des pièces NEUROGRID.

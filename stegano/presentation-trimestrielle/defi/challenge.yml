@@ -1,0 +1,26 @@
+name: presentation-trimestrielle
+author: Herastique - Rémi Pantzer
+category: Stéganographie
+description: |
+  Cette presentation interne des resultats du T3 a circule par courriel.
+  Un graphique y a ete "nettoye" avant diffusion pour masquer une donnee
+  sensible... du moins en apparence.
+
+  Le flag est au format `FPS{...}`.
+type: dynamic
+extra:
+  initial: 100
+  decay: 10
+  minimum: 50
+  function: logarithmic
+flags:
+  - FPS{rognage_powerpoint_non_destructif_image_intacte}
+files:
+  - presentation-T3-2026.pptx
+tags:
+  - Facile
+  - stegano
+  - office
+connection_info: ""
+requirements: []
+state: visible

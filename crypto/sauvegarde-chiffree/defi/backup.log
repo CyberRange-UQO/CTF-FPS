@@ -1,0 +1,5 @@
+# /var/log/corp/backup.log
+2026-09-16 02:00:00 UTC  INFO  demarrage sauvegarde quotidienne
+2026-09-16 02:00:00 UTC  INFO  archivage /etc/app -> /backup/sauvegarde.tar.gz
+2026-09-16 02:00:00 UTC  INFO  chiffrement (seed=heure systeme)
+2026-09-16 02:00:00 UTC  INFO  ecriture /backup/sauvegarde.tar.gz.enc (termine)

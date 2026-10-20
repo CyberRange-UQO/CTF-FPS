@@ -1,0 +1,39 @@
+name: memoire-vive
+author: Herastique - Rémi Pantzer
+category: Forensic
+description: |
+  Suite de "serveur-compromis". L'archive /var/tmp/.cache/x.enc trouvee sur le
+  serveur est chiffree par une cle qui n'a jamais touche le disque : elle
+  n'existait qu'en memoire vive. Un dump memoire du serveur a ete capture avant
+  l'arret de la machine.
+
+  Retrouvez la charge utile residente, reconstituez la cle et dechiffrez
+  l'archive.
+
+  Fichiers fournis :
+    - memoire.raw.xz          (dump memoire brut, decompresser avec `unxz`)
+    - symbols/linux-6.12.107-deb13.json.xz   (table de symboles Volatility 3)
+  Vous aurez aussi besoin de x.enc, extrait du defi precedent.
+
+  Le flag est au format `FPS{...}`.
+type: dynamic
+extra:
+  initial: 500
+  decay: 20
+  minimum: 200
+  function: logarithmic
+flags:
+  - FPS{memfd_elf_fileless_cle_aes_masquee_par_le_pid}
+files:
+  - memoire.raw.xz
+  - symbols/linux-6.12.107-deb13.json.xz
+tags:
+  - Expert
+  - forensic
+  - memory
+  - volatility3
+  - reverse
+connection_info: ""
+requirements:
+  - serveur-compromis
+state: visible

@@ -1,0 +1,21 @@
+name: Colloriage
+author: Askela
+category: Misc
+description: |
+  Après avoir colorié, il faut toujours s'assurer de remettre les crayons en ordre. Suite à ça, il faut toujours se rappeler que la clé pour bien colorier se trouve dans la qualité du crayon utilisé. Format: FLAG_X (majuscules)
+
+  Cle de Vigenere : CRAYON
+type: dynamic
+extra:
+  initial: 150
+  decay: 10
+  minimum: 50
+  function: logarithmic
+flags:
+  - FLAG_JEMESOUVIENS
+files:
+  - Coloriage.pdf
+tags: []
+connection_info: ""
+requirements: []
+state: visible

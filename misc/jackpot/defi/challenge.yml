@@ -1,0 +1,18 @@
+name: Jackpot
+author: Askela
+category: Misc
+description: |
+  devinez le nombre chanceux entre 1 et 1000 :). Format: FLAG_X  (seul challenge où le bruteforce est autorisé)
+type: dynamic
+extra:
+  initial: 100
+  decay: 10
+  minimum: 50
+  function: logarithmic
+flags:
+  - FLAG_677
+files: []
+tags: []
+connection_info: ""
+requirements: []
+state: visible

@@ -1,0 +1,4 @@
+Poste de depannage - etage 2
+Branche sur SW-ETAGE2, port Gi0/7 (VLAN bureautique).
+Extrait de la config du switch recupere lors de la derniere intervention :
+voir sw-etage2-running-config.txt

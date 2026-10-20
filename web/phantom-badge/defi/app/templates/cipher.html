@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Terminal CIPHER · PHANTOM{% endblock %}
+{% block content %}
+<div class="page-heading"><div><span class="eyebrow pink">SECURE TERMINAL / CIPHER-SEC</span><h1>Terminal CIPHER</h1><p class="muted">Contrôle d'accès aux archives d'incidents du département.</p></div><span class="badge">CIPHER / PARC v1</span></div>
+<section class="panel terminal"><div class="terminal-header"><span class="eyebrow"><span class="status-dot" aria-hidden="true"></span> CIPHER / ARCHIVE ACCESS</span><span class="system-label">DEVICE N9-CPH-017</span></div><div class="terminal-body"><div class="terminal-emblem" aria-hidden="true">C<span>//</span></div><div><span class="eyebrow pink">ZONE À ACCÈS RESTREINT</span><h2>Présentez votre badge.</h2><p class="muted">L'accès aux dossiers confidentiels est soumis à la politique d'habilitation du terminal.</p></div></div>
+<div class="policy-grid"><div class="badge-scan-zone"><span class="eyebrow muted">BADGE PRÉSENTÉ</span><strong id="presented-badge">En attente de présentation</strong></div><div><span class="eyebrow muted">ZONE PROTÉGÉE</span><strong>CIPHER</strong><span>TECH-2 minimum</span></div><div><span class="eyebrow muted">POLITIQUE</span><strong>CIPHER-SEC</strong><span>Archives d'incidents</span></div></div>
+<div class="terminal-actions"><button id="present-badge" class="button button-primary" type="button">Présenter mon badge <span aria-hidden="true">↗</span></button><span class="system-label">CANAL DE COMPATIBILITÉ / EN LIGNE</span></div><div id="cipher-result" class="result-box" role="status" aria-live="polite"><span class="eyebrow">EN ATTENTE</span><p>Aucun badge présenté au terminal.</p></div></section>
+<div id="report-container" aria-live="polite"></div>
+<p class="fineprint">Disponibilité, habilitation ou compte rendu d'équipement : Consultez le <a href="{{ url_for('support') }}">support technique</a>.</p>
+<noscript><p class="alert">Activez JavaScript pour présenter votre badge au terminal.</p></noscript>
+{% endblock %}

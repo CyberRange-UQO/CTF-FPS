@@ -1,0 +1,31 @@
+SW-ETAGE2#show running-config
+!
+hostname SW-ETAGE2
+!
+vlan 10
+ name BUREAUTIQUE
+vlan 99
+ name MANAGEMENT
+!
+interface GigabitEthernet0/5
+ description POSTE-ACCUEIL
+ switchport mode access
+ switchport access vlan 10
+!
+interface GigabitEthernet0/7
+ description POSTE-DEPANNAGE  ! TODO repasser en access apres l'intervention
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 10
+ switchport trunk allowed vlan 10,99
+ switchport mode trunk
+!
+interface GigabitEthernet0/12
+ description SRV-RH (10.10.99.10)
+ switchport mode access
+ switchport access vlan 99
+!
+interface Vlan99
+ description MANAGEMENT
+ ip address 10.10.99.1 255.255.255.0
+!
+end

@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Connexion · PHANTOM{% endblock %}
+{% block content %}
+<div class="login-layout">
+  <section class="login-intro"><span class="eyebrow accent">VANTA / PROFESSIONAL IDENTITY</span><h1>Une identité.<br>Chaque accès.</h1><p class="lead">Votre badge professionnel vous accompagne dans le réseau VANTA.</p><div class="intro-rule"></div><p class="muted">Gestion des habilitations, vérification d'identité et accès aux équipements de votre division.</p><div class="login-schematic" aria-hidden="true"><span>IDENTITY</span><i></i><span>BADGE</span><i></i><span>ACCESS</span></div><span class="system-label">PHANTOM EMPLOYEE IDENTITY NETWORK<br>NOCTIS-9 / INFRASTRUCTURE PROFESSIONNELLE</span></section>
+  <section class="panel login-panel"><span class="eyebrow accent">AUTHENTIFICATION / 01</span><h2>Connexion au portail</h2><p class="muted">Utilisez votre compte professionnel VANTA.</p>{% if error %}<p class="alert alert-danger" role="alert">{{ error }}</p>{% endif %}<form class="login-form" method="post" action="{{ url_for('login') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><label for="username">Identifiant professionnel</label><input id="username" name="username" autocomplete="username" maxlength="128" required placeholder="Votre identifiant"><label for="password">Mot de passe</label><input id="password" name="password" type="password" autocomplete="current-password" maxlength="256" required><button class="button button-primary" type="submit">Ouvrir ma session <span aria-hidden="true">↗</span></button></form><p class="fineprint">Accès réservé aux salariés et sous-traitants autorisés. Les habilitations sont définies par votre périmètre d'affectation.</p></section>
+</div>
+{% endblock %}

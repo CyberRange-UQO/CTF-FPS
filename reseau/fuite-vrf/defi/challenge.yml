@@ -1,0 +1,33 @@
+name: fuite-vrf
+author: Herastique - Rémi Pantzer
+category: Réseau
+description: |
+  Vous avez un acces (SSH) a un poste du reseau de CLIENT-A, raccorde a un
+  operateur MPLS/L3VPN. En theorie, vous ne voyez QUE le reseau de CLIENT-A :
+  les autres clients sont isoles dans des VRF distinctes.
+
+  Mais l'operateur a peut-etre fait une erreur dans la configuration des
+  route-targets... Trouvez le serveur interne d'un autre client et lisez son
+  secret.
+
+  Acces : `ssh root@192.168.10.100 -p 1347` (mot de passe `ClientA2026`).
+
+  Le flag est au format `FPS{...}`.
+type: dynamic
+extra:
+  initial: 400
+  decay: 20
+  minimum: 150
+  function: logarithmic
+flags:
+  - FPS{route_target_mal_configure_fuite_entre_vrf}
+files: []
+tags:
+  - Difficile
+  - reseau
+  - vrf
+  - l3vpn
+  - route-target
+connection_info: "ssh root@192.168.10.100 -p 1347"
+requirements: []
+state: visible

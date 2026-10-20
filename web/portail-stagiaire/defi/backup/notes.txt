@@ -1,0 +1,3 @@
+Sauvegardes du portail RH.
+- config.php.bak : copie de l'ancienne config (a supprimer)
+- restaurer via l'outil interne si besoin

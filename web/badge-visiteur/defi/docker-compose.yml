@@ -1,0 +1,9 @@
+name: ctf-badge-visiteur
+services:
+  badge-visiteur:
+    build: .
+    ports:
+      - "1342:5000"
+    environment:
+      - FLAG=FPS{un_cookie_de_role_non_signe_cote_client}
+    restart: unless-stopped

@@ -1,0 +1,19 @@
+name: De la musique pour mes oreilles
+author: Askela
+category: Misc
+description: |
+  Format: FLAG_X (majuscules)
+type: dynamic
+extra:
+  initial: 100
+  decay: 10
+  minimum: 50
+  function: logarithmic
+flags:
+  - FLAG_GHOSTBUSTERS
+files:
+  - De_la_musique_pour_mes_oreilles.png
+tags: []
+connection_info: ""
+requirements: []
+state: visible

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Vue d'ensemble · PHANTOM{% endblock %}
+{% block content %}
+<div class="page-heading"><div><span class="eyebrow accent">WORKFORCE / C-073</span><h1>Votre espace professionnel.</h1><p class="muted">Identité, habilitations et terminaux. Tout votre périmètre en un point.</p></div><span class="badge badge-active"><span class="status-dot" aria-hidden="true"></span> SESSION ACTIVE</span></div>
+<div class="dashboard-grid">
+  <div>{% include '_badge.html' %}<p class="fineprint">Badge rattaché à votre session professionnelle. Les accès sont évalués par chaque service destinataire.</p></div>
+  <div class="panel-stack"><section class="panel service-card"><div class="panel-heading"><span class="eyebrow accent">01 / IDENTITÉ</span><span class="badge">PHANTOM v2</span></div><h2>Identité VANTA</h2><p class="muted">Vérifiez l'état et l'intégrité de votre badge auprès du service d'identité.</p><a class="text-link" href="{{ url_for('identity') }}">Accéder à mon identité <span aria-hidden="true">↗</span></a></section><section class="panel service-card cipher-service"><div class="panel-heading"><span class="eyebrow pink">02 / ZONE PROTÉGÉE</span><span class="badge badge-pink">CIPHER-SEC</span></div><h2>Terminal CIPHER</h2><p class="muted">Point d'accès aux archives d'incidents. Présentation du badge professionnel requise.</p><a class="text-link" href="{{ url_for('cipher') }}">Ouvrir le terminal <span aria-hidden="true">↗</span></a></section></div>
+</div>
+<div class="maintenance"><span class="maintenance-marker" aria-hidden="true">i</span><div><span class="eyebrow">INFORMATION DE SERVICE</span><h2>Le réseau d'identité évolue.</h2><p class="muted">La migration des équipements professionnels se poursuit. Retrouvez les procédures et l'état du parc dans le centre de support.</p><a href="{{ url_for('support') }}#kb-phantom-017" class="text-link">Consulter la documentation <span aria-hidden="true">→</span></a></div><span class="badge">MIGRATION PARTIAL</span></div>
+{% endblock %}

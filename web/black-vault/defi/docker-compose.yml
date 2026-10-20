@@ -1,0 +1,36 @@
+name: vanta-black-vault
+
+services:
+  black-vault:
+    build:
+      context: .
+    ports:
+      - "${BLACK_VAULT_BIND:-127.0.0.1}:${BLACK_VAULT_PORT:-8083}:8000"
+    environment:
+      ROOT_AUDIT_KEY_B64U: "${ROOT_AUDIT_KEY_B64U:?Provisionnez ROOT_AUDIT_KEY_B64U dans .env}"
+      SESSION_COOKIE_SECURE: "${SESSION_COOKIE_SECURE:-false}"
+      VAULT_ROOT: /run/black-vault-data
+    user: "10001:10001"
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=16m,uid=10001,gid=10001,mode=1770
+      - /run/black-vault-data:rw,noexec,nosuid,nodev,size=8m,uid=10001,gid=10001,mode=0700
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 64
+    mem_limit: 192m
+    cpus: 1.0
+    init: true
+    restart: unless-stopped
+    networks:
+      - vault-ingress
+
+networks:
+  vault-ingress:
+    driver: bridge
+    # Published ports work on the laboratory's Docker 20.10. No runtime egress needed.
+    driver_opts:
+      com.docker.network.bridge.enable_ip_masquerade: "false"
+      com.docker.network.bridge.enable_icc: "false"

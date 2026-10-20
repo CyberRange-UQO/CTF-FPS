@@ -1,0 +1,32 @@
+name: etiquettes
+author: Herastique - Rémi Pantzer
+category: Réseau
+description: |
+  Une capture a ete realisee sur un lien du coeur d'un operateur MPLS, entre un
+  routeur PE et le routeur P. Le trafic d'un client (CLIENT-C) y transite,
+  encapsule dans des labels MPLS, et le plan de controle BGP VPNv4 y est visible.
+
+  Depilez les labels pour lire la telemetrie interne de CLIENT-C. Notez bien ce
+  que le plan de controle revele (RD, RT, label VPN) : cela vous servira
+  ailleurs.
+
+  Fichier fourni : `capture-coeur-mpls.pcap`. Le flag est au format `FPS{...}`.
+type: dynamic
+extra:
+  initial: 300
+  decay: 15
+  minimum: 100
+  function: logarithmic
+flags:
+  - FPS{mpls_l3vpn_depile_les_labels_et_lis_le_vpn}
+files:
+  - capture-coeur-mpls.pcap
+tags:
+  - Intermédiaire
+  - reseau
+  - mpls
+  - l3vpn
+  - pcap
+connection_info: ""
+requirements: []
+state: visible

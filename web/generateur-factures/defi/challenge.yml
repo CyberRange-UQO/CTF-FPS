@@ -1,0 +1,32 @@
+name: generateur-factures
+author: Herastique - Rémi Pantzer
+category: Web
+description: |
+  Corp propose un petit outil interne pour generer des factures. Le texte de
+  la note client apparait tel quel sur la facture produite.
+
+  Le code applique un filtre sur ce champ. Est-il suffisant ?
+
+  Je pense qu'on devrait explorer l'/app apres pour bien comprendre le mecanisme
+
+  Acces : `http://192.168.10.100:1343`.
+
+  Le flag est au format `FPS{...}`.
+type: dynamic
+extra:
+  initial: 300
+  decay: 15
+  minimum: 100
+  function: logarithmic
+flags:
+  - FPS{ssti_jinja2_attr_bypass_sans_underscore_ni_point}
+files:
+  - app.py
+tags:
+  - Intermédiaire
+  - web
+  - ssti
+  - jinja2
+connection_info: "http://192.168.10.100:1343"
+requirements: []
+state: visible

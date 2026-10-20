@@ -1,0 +1,19 @@
+name: Registre de la Bibliothèque
+author: Askela
+category: Misc
+description: |
+  Voici le registre de la bilbliothèque. Format: FLAG_X (majuscules)
+type: dynamic
+extra:
+  initial: 100
+  decay: 10
+  minimum: 50
+  function: logarithmic
+flags:
+  - FLAG_DUNE_FRANKENSTEIN_DRACULA_FONDATION
+files:
+  - Registre_biblio.xlsx
+tags: []
+connection_info: ""
+requirements: []
+state: visible

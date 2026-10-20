@@ -1,0 +1,29 @@
+name: badge-visiteur
+author: Herastique - Rémi Pantzer
+category: Web
+description: |
+  A l'accueil de Corp, un badge visiteur numerique vous est attribue
+  automatiquement. L'espace d'administration, lui, est reserve au personnel.
+
+  Saurez-vous y acceder quand meme ?
+
+  Acces : `http://192.168.10.100:1342`.
+
+  Le flag est au format `FPS{...}`.
+type: dynamic
+extra:
+  initial: 100
+  decay: 10
+  minimum: 50
+  function: logarithmic
+flags:
+  - FPS{un_cookie_de_role_non_signe_cote_client}
+files: []
+tags:
+  - Facile
+  - web
+  - auth
+  - cookie
+connection_info: "http://192.168.10.100:1342"
+requirements: []
+state: visible

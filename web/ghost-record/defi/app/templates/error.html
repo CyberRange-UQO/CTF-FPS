@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block title %}Requête {{ code }}{% endblock %}
+{% block content %}
+<section class="panel error-panel"><p class="eyebrow accent">EIDOLON / {{ code }}</p><h1>{% if code == 404 %}Ressource indisponible{% elif code == 405 %}Action non disponible{% elif code == 413 %}Requête trop volumineuse{% else %}Requête invalide{% endif %}</h1><p class="muted">Le portail ne peut pas traiter cette demande.</p><a class="button button-primary" href="{{ url_for('dashboard') if g.user else url_for('login') }}">Revenir au portail</a></section>
+{% endblock %}

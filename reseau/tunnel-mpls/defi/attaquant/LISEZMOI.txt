@@ -1,0 +1,12 @@
+Vous etes sur un lien du coeur MPLS (segment 10.1.23.0/24), entre le routeur P
+et le PE2. Interface data : celle en 10.1.23.0/24 (IP .50).
+
+Le PE2 fait confiance aux paquets DEJA ETIQUETES recus sur ce lien : il depile
+le label et commute selon la table VPN, sans verifier la provenance.
+
+CLIENT-C (VRF isolee) a un serveur interne en 192.168.22.2. Son API admin
+ecoute en UDP/5000 et renvoie un secret. Vous avez decode, dans la capture du
+defi "etiquettes", le label VPN de CLIENT-C et ses adresses de site.
+
+Outil fourni : /root/inject.py (exemple scapy). A vous de forger le bon paquet
+MPLS et de sniffer la reponse labellisee qui repart vers l'autre site.

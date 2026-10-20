@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>{% block title %}PHANTOM{% endblock %} · VANTA Systems</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='vanta.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='phantom.css') }}">
+  {% if g.user %}<script src="{{ url_for('static', filename='portal.js') }}" defer></script>{% endif %}
+</head>
+<body>
+<a class="skip-link" href="#main">Aller au contenu</a>
+<div class="shell{% if not g.user %} shell-public{% endif %}">
+  <aside class="sidebar" aria-label="Portail PHANTOM">
+    <a class="brand" href="{{ url_for('dashboard') if g.user else url_for('login') }}"><span class="brand-mark" aria-hidden="true">V<span>//</span></span><span>VANTA<span class="brand-sub">SYSTEMS</span></span></a>
+    <div class="product"><span class="eyebrow">EMPLOYEE IDENTITY NETWORK</span><strong>PHANTOM</strong><span>Identités professionnelles</span></div>
+    {% if g.user %}
+    <nav class="navigation" aria-label="Navigation principale">
+      {% for endpoint, number, label in [('dashboard','01',"Vue d'ensemble"),('identity','02','Identité VANTA'),('cipher','03','Terminal CIPHER'),('support','04','Support technique')] %}
+      <a href="{{ url_for(endpoint) }}" {% if request.endpoint == endpoint %}aria-current="page"{% endif %}><span aria-hidden="true">{{ number }}</span>{{ label }}</a>
+      {% endfor %}
+    </nav>
+    <div class="sidebar-card"><span class="eyebrow">PROFIL CONNECTÉ</span><strong>{{ g.user.display_id }}</strong><span>Sous-traitant · FIELD_SUPPORT</span><span class="badge badge-active">BADGE ACTIVE</span></div>
+    {% endif %}
+    <div class="sidebar-foot"><span class="status-dot" aria-hidden="true"></span> NODE : NOCTIS-9<br><span class="muted">Professional network · PH v2</span></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><span class="eyebrow">PHANTOM <span class="muted">/</span> WORKFORCE ACCESS</span>
+    {% if g.user %}<div class="account"><span class="account-name">{{ g.user.username }}</span><form action="{{ url_for('logout') }}" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="button button-quiet" type="submit">Déconnexion</button></form></div>{% else %}<span class="badge">ACCÈS PROFESSIONNEL</span>{% endif %}
+    </header>
+    <main id="main" class="main" tabindex="-1">{% block content %}{% endblock %}</main>
+    <footer class="footer"><span>VANTA Systems © 2147 · Noctis-9</span><span>Votre identité. Notre propriété.</span></footer>
+  </div>
+</div>
+</body>
+</html>

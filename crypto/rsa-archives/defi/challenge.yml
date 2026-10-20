@@ -1,0 +1,38 @@
+name: rsa-archives
+author: Herastique - Rémi Pantzer
+category: Crypto
+description: |
+  Un vieux serveur d'archives chiffrait les messages sensibles en RSA. Ses
+  paires de cles ont ete generees sur un systeme fraichement installe, avec
+  une source d'alea de mauvaise qualite.
+
+  On a recupere les 6 cles publiques (`pubkeys/`) et quelques messages chiffres
+  (`messages/`, OAEP). Dechiffrez le message contenant le flag.
+
+  Le flag est au format `FPS{...}`.
+type: dynamic
+extra:
+  initial: 300
+  decay: 15
+  minimum: 100
+  function: logarithmic
+flags:
+  - FPS{deux_modules_rsa_un_facteur_commun_pgcd}
+files:
+  - pubkeys/archive-01.pem
+  - pubkeys/archive-02.pem
+  - pubkeys/archive-03.pem
+  - pubkeys/archive-04.pem
+  - pubkeys/archive-05.pem
+  - pubkeys/archive-06.pem
+  - messages/message-01.bin
+  - messages/message-02.bin
+  - messages/message-04.bin
+  - messages/message-05.bin
+tags:
+  - Intermédiaire
+  - crypto
+  - rsa
+connection_info: ""
+requirements: []
+state: visible

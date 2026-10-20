@@ -1,0 +1,29 @@
+name: palette
+author: Herastique - Rémi Pantzer
+category: Stéganographie
+description: |
+  Ce logo en couleurs indexees semble tout a fait ordinaire. Pourtant, quelque
+  chose cloche dans sa palette : son ordre n'a rien d'un hasard.
+
+  Aucune analyse de pixels ne donnera rien - l'image affichee est intacte.
+  Regardez comment la palette est rangee.
+
+  Le flag est au format `FPS{...}`.
+type: dynamic
+extra:
+  initial: 500
+  decay: 20
+  minimum: 200
+  function: logarithmic
+flags:
+  - FPS{ordre_de_palette_permutation_code_de_lehmer}
+files:
+  - logo-corp-indexe.png
+tags:
+  - Expert
+  - stegano
+  - palette
+  - permutation
+connection_info: ""
+requirements: []
+state: visible

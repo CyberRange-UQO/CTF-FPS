@@ -1,0 +1,15 @@
+<?php
+// Sauvegarde de configuration - portail RH (NE PAS DIFFUSER)
+// Genere automatiquement le 2026-08-30
+
+define('DB_HOST', 'db.corp.local');
+define('DB_NAME', 'rh_portail');
+define('DB_USER', 'rh_app');
+define('DB_PASS', 'Pr!ntemps2026$rh');
+
+// Cle de maintenance interne
+define('MAINT_TOKEN', 'FPS{un_dossier_backup_oublie_en_prod}');
+
+define('SMTP_HOST', 'smtp.corp.local');
+define('SMTP_FROM', 'no-reply@corp.local');
+?>

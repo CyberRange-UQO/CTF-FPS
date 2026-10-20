@@ -1,0 +1,33 @@
+name: cle-partagee
+author: Herastique - Rémi Pantzer
+category: Crypto
+description: |
+  Le "chiffreur maison" de l'entreprise applique un XOR avec une cle aleatoire.
+  Par erreur, il a servi a chiffrer deux fichiers avec LA MEME cle : la brochure
+  institutionnelle (document public, disponible en clair) et un memo interne
+  confidentiel.
+
+  On fournit `brochure.pdf` (clair), `brochure.pdf.enc` et `memo.enc`.
+  Retrouvez le contenu du memo.
+
+  Le flag est au format `FPS{...}`.
+type: dynamic
+extra:
+  initial: 100
+  decay: 10
+  minimum: 50
+  function: logarithmic
+flags:
+  - FPS{reutiliser_un_keystream_xor_est_un_two_time_pad}
+files:
+  - brochure.pdf
+  - brochure.pdf.enc
+  - memo.enc
+tags:
+  - Facile
+  - crypto
+  - xor
+  - known-plaintext
+connection_info: ""
+requirements: []
+state: visible

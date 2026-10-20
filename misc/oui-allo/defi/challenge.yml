@@ -1,0 +1,20 @@
+name: Oui Allo?
+author: Askela
+category: Misc
+description: |
+  Vous êtes en charge du triage! N'oubliez pas de noter à quel service transférer l'appel (111,211, 311, 411, 511, 811, 911) et leur adresse...
+  FLAG_XXXXXXXXXX
+type: dynamic
+extra:
+  initial: 150
+  decay: 10
+  minimum: 50
+  function: logarithmic
+flags:
+  - FLAG_ASSISTANCE
+files:
+  - calls.zip
+tags: []
+connection_info: ""
+requirements: []
+state: visible

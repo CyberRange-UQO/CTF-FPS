@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="ROOT OF TRUST — autorité de certification du registre VANTA.">
+  <title>ROOT OF TRUST · VANTA//SYSTEMS</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='trust.css') }}">
+  <script src="{{ url_for('static', filename='trust.js') }}" defer></script>
+</head>
+<body>
+  <a id="skip-link" class="skip-link" href="#authority-gateway">Accéder au sas d'autorité</a>
+  <header class="masthead">
+    <a class="wordmark" href="/" aria-label="VANTA Systems, accueil">VANTA<span>//</span>SYSTEMS</a>
+    <span class="institution">ROOT AUTHORITY <span class="quiet">/ ROT-05</span></span>
+    <span class="local-label">REGISTRE LOCAL · NOCTIS-9</span>
+  </header>
+  <main id="authority-gateway" class="gateway" tabindex="-1" aria-labelledby="gateway-title" data-state="required">
+    <div class="gateway-classification"><span>VANTA // ROOT AUTHORITY</span><span>AUTHORITY GATEWAY — ACCÈS RESTREINT</span></div>
+    <div class="gateway-layout">
+      <section class="gateway-identity" aria-labelledby="gateway-title">
+        <div class="authority-seal" aria-hidden="true">
+          <svg class="authority-seal-geometry" viewBox="0 0 360 360" focusable="false">
+            <circle cx="180" cy="180" r="166" class="seal-outer"/>
+            <circle cx="180" cy="180" r="151" class="seal-calibration"/>
+            <path d="M180 47 295 113 295 247 180 313 65 247 65 113Z" class="seal-hexagon"/>
+            <path d="M180 67 278 123 278 237 180 293 82 237 82 123Z" class="seal-inner"/>
+            <path d="M180 14V45M180 315V346M14 180H45M315 180H346" class="seal-axis"/>
+            <path d="M120 138 180 236 240 138M150 138 180 186 210 138" class="seal-monogram"/>
+            <path d="M135 259H225M150 272H210" class="seal-inscription"/>
+          </svg>
+          <span class="seal-caption">VANTA / AUTHORITY OF RECORD</span>
+        </div>
+        <p class="eyebrow">ROOT OF TRUST / ROT-05</p>
+        <h1 id="gateway-title">AUTHORITY<br>GATEWAY<span class="title-dot">.</span></h1>
+        <p class="gateway-subtitle">Accès restreint aux autorités accréditées.</p>
+        <p class="gateway-introduction">Ce terminal ne reconnaît aucune identité opérateur locale. Toute demande d'accès doit être présentée sous la forme d'un mandat vérifiable par l'autorité de confiance VANTA.</p>
+        <p class="gateway-boundary"><span>VANTA / AUTHORITY OF RECORD</span>Les habilitations sont attachées au mandat présenté. Le référentiel public décrit les autorités reconnues et les contrats du service.</p>
+      </section>
+      <section class="gateway-panel" aria-labelledby="gateway-form-title">
+        <div class="gateway-panel-header"><span class="eyebrow">AUTHORITY CONTROL</span><span id="gateway-state" class="authority-state" role="status" aria-live="polite">AUTHORITY REQUIRED</span></div>
+        <h2 id="gateway-form-title">Présenter un mandat.</h2>
+        <p>La recevabilité de la demande est évaluée par l'autorité VANTA.</p>
+        <form id="read-form" autocomplete="off">
+          <label for="read-token">Mandat d'autorité</label>
+          <textarea id="read-token" class="token-input gateway-token" rows="5" spellcheck="false" autocomplete="off" autocapitalize="off" placeholder="Collez le mandat complet" required aria-describedby="token-note gateway-error"></textarea>
+          <p id="token-note" class="quiet">Jeton seul ou préfixe Bearer. Le mandat reste uniquement en mémoire dans cet onglet. Limite : 4096 octets ; une saisie excessive est refusée sans troncature. Ne transmettez pas de matériel secret dans ce champ.</p>
+          <button id="verify-authority" type="submit">Vérifier l'autorité</button>
+          <button id="cancel-authority" type="button" class="secondary" hidden>Annuler la présentation</button>
+        </form>
+        <div id="gateway-progress" class="status" role="status" aria-live="polite">En attente d'un mandat vérifiable.</div>
+        <div id="gateway-error" class="status" role="alert" aria-atomic="true"></div>
+        <p class="gateway-memory-note">Aucune émission de mandat sur ce terminal. Les documents publics restent accessibles sans autorisation.</p>
+        <nav class="gateway-document-links" aria-label="Documents publics de confiance"><a href="#gateway-contract-doc">Référentiel d'autorité</a><a href="#gateway-policy-doc">Politique d'attestation</a><a href="#gateway-verification-doc">Contrats de vérification</a></nav>
+      </section>
+    </div>
+    <section class="gateway-public" aria-labelledby="gateway-public-title">
+      <div class="gateway-public-heading"><h2 id="gateway-public-title">Documents de confiance</h2><span class="badge">ACCÈS PUBLIC</span></div>
+      <div id="gateway-public-status" class="status" role="status" aria-live="polite">Chargement des contrats publics…</div>
+      <details id="gateway-contract-doc"><summary>Référentiel d'autorité / mandats et habilitations</summary><dl id="gateway-jwt-claims"></dl><p>Le contrat précise les claims, les valeurs admises, les permissions par route et les conventions de signature. Les dates du mandat utilisent l'heure réelle du serveur, indépendamment de la chronologie des archives. Les clés HMAC sont des valeurs binaires de 32 octets ; leur encodage de transport est Base64URL canonique sans padding.</p><pre id="gateway-full-contract" tabindex="0"></pre><a href="/api/public/contract">Contrat JSON</a></details>
+      <details id="gateway-policy-doc"><summary>Politique d'attestation / périmètre et objectifs</summary><p id="gateway-policy-description"></p><ul id="gateway-policy-criteria" class="criteria"></ul><p id="gateway-additional-policy"></p><a href="/api/public/policy">Politique JSON</a></details>
+      <details id="gateway-verification-doc"><summary>Contrats de vérification / autorité Ed25519</summary><p>Les reçus de certification sont vérifiables avec la clé publique ci-dessous. Cette autorité est distincte de celle des mandats de demande. Le contrat public définit les octets signés et la sérialisation canonique.</p><pre id="gateway-public-key" tabindex="0"></pre><a href="/api/public/attestation-key">Clé publique JSON</a></details>
+    </section>
+    <noscript><p class="gateway-noscript">JavaScript local est nécessaire pour utiliser le terminal dans le navigateur. Les <a href="/api/public/contract">contrats</a>, la <a href="/api/public/policy">politique</a> et la <a href="/api/public/attestation-key">clé publique</a> restent accessibles, ainsi que les APIs avec votre client HTTP.</p></noscript>
+    <footer>VANTA//SYSTEMS <span>AUTHORITY OF RECORD · REGISTRE LOCAL</span></footer>
+  </main>
+  <div id="certification-workbench" class="workbench" hidden>
+    <aside class="rail" aria-label="Espaces de certification">
+      <div class="seal" aria-hidden="true"><span>V</span><small>ROOT AUTHORITY<br>2147</small></div>
+      <p class="eyebrow">SERVICE DE CERTIFICATION</p>
+      <nav class="workspace-nav" aria-label="Espaces métier">
+        <a href="#register" data-workspace="register" aria-current="page">Registre de provenance<small id="nav-register">Accès protégé</small></a>
+        <a href="#proof" data-workspace="proof">Dossiers d'attestation<small id="nav-proof">Brouillon local</small></a>
+        <a href="#disclosure" data-workspace="disclosure">Autorité de divulgation<small>Réception des mandats</small></a>
+        <a href="#receipts" data-workspace="receipts">Reçus de certification<small id="nav-receipt">Aucun reçu</small></a>
+        <a href="#contracts" data-workspace="contracts">Registre d'autorité<small id="nav-contract">Référentiel public</small></a>
+      </nav>
+      <div class="rail-note"><span class="eyebrow">AUTHORITY OF RECORD</span><p>Mandats, provenance et décisions de certification.</p><a href="/api/public/attestation-key">Autorité publique Ed25519</a></div>
+    </aside>
+    <main id="main" tabindex="-1">
+      <div class="operation-heading">
+        <p class="eyebrow">VANTA / SERVICE DE CERTIFICATION</p>
+        <h1>ROOT OF TRUST<span class="title-dot">.</span></h1>
+        <p class="lede">Infrastructure d'attestation et de conservation de provenance.</p>
+      </div>
+      <section class="session-bar" aria-label="Mandat de session">
+        <div><span id="session-state" class="authority-state" role="status" aria-live="polite">AUTHORITY VERIFIED</span><p id="authority-validity" class="quiet"></p></div>
+        <div class="actions"><button type="button" id="renew-authority" class="secondary">Remplacer le mandat</button><button type="button" id="forget-token" class="secondary">Fermer la session d'autorité</button></div>
+        <p class="session-note">Fermeture locale : les mandats sont effacés de l'onglet. Le brouillon et la sélection restent en mémoire jusqu'au rechargement.</p>
+      </section>
+      <section id="register" aria-labelledby="register-title" class="workspace-view">
+        <div class="view-heading"><div><p class="eyebrow">AUDIT / PROVENANCE</p><h2 id="register-title" tabindex="-1">Registre de provenance</h2></div><span class="badge">CONSULTATION</span></div>
+        <p>Événements du dossier autorisé. Les horodatages historiques sont exprimés en UTC. L'empreinte fournie par le registre porte sur l'objet original sans son champ <code>sha256</code>.</p>
+        <div class="register-tools"><span id="event-count" class="quiet">Registre protégé.</span><button id="refresh-events" class="secondary" type="button" disabled>Actualiser le registre</button></div>
+        <div id="read-status" class="status" role="status" aria-live="polite">Autorité de lecture vérifiée.</div>
+        <div class="register-grid"><div id="event-list" class="event-list"><p class="empty-state">Aucun événement chargé.</p></div><article class="event-reader"><h3 id="event-reader-heading" tabindex="-1">Document d'origine</h3><div id="detail-status" class="status" role="status" aria-live="polite">Aucun document ouvert.</div><pre id="event-detail" tabindex="0">Contenu original et métadonnées du registre.</pre></article></div>
+      </section>
+      <section id="proof" aria-labelledby="proof-title" class="workspace-view" hidden>
+        <div class="view-heading"><div><p class="eyebrow">DOSSIER / VANTA-PROOF/1</p><h2 id="proof-title" tabindex="-1">Dossiers d'attestation</h2></div><span class="badge">BROUILLON LOCAL</span></div>
+        <p>Un dossier associe une assertion à des références documentaires et à leurs empreintes. L'éditeur accepte un manifeste conforme au contrat <code>VANTA-PROOF/1</code>.</p>
+        <div class="actions"><button id="format-selection" type="button" class="secondary" disabled>Importer la sélection du registre</button><span id="selection-count" class="quiet">0 pièce choisie</span></div>
+        <label for="manifest">Manifeste JSON</label>
+        <textarea id="manifest" class="manifest-input" rows="14" maxlength="16000" spellcheck="false" autocomplete="off" autocapitalize="off" aria-describedby="manifest-note manifest-status">{
+  "schema": "VANTA-PROOF/1",
+  "case_id": "CASE-SIL-2147-07",
+  "assertion": "SILENCE_COVERUP",
+  "evidence": []
+}</textarea>
+        <p id="manifest-note" class="quiet">Quatre champs exacts ; de 1 à 12 pièces, IDs uniques et triés en ASCII croissant. L'import remplace le brouillon avec la sélection courante. L'empreinte d'engagement est définie par le contrat de canonisation.</p>
+        <div id="manifest-status" class="status" role="status" aria-live="polite">Brouillon conservé uniquement dans cet onglet.</div>
+        <details><summary>Catégorie d'attestation / SILENCE_COVERUP</summary><p id="dossier-policy-description"></p><p>Les objectifs et conventions documentaires sont consultables dans le <a href="#contracts" data-workspace="contracts">registre d'autorité</a>.</p><pre id="manifest-contract" tabindex="0"></pre></details>
+        <details><summary>Sérialisation canonique / SHA-256</summary><p>Le tri des clés conserve l'ordre du tableau des preuves. Aucun saut de ligne final, BOM ou préfixe. La même convention s'applique aux événements sans <code>sha256</code> et au reçu sans enveloppe.</p><pre id="canonical-python" tabindex="0"></pre><p>Vecteur normatif neutre :</p><pre id="demo-vector" tabindex="0"></pre><code id="demo-hash" class="fingerprint"></code></details>
+      </section>
+      <section id="disclosure" aria-labelledby="disclosure-title" class="workspace-view" hidden>
+        <div class="view-heading"><div><p class="eyebrow">DISCLOSURE / REQUEST AUTHORITY</p><h2 id="disclosure-title" tabindex="-1">Autorité de divulgation</h2></div><span class="badge">RÉCEPTION</span></div>
+        <p>Les demandes portent sur le manifeste courant du dossier d'attestation. Le mandat de divulgation est évalué indépendamment du mandat de consultation.</p>
+        <form id="publish-form" autocomplete="off">
+          <label for="publish-token">Mandat de publication</label>
+          <textarea id="publish-token" class="token-input" rows="3" spellcheck="false" autocomplete="off" autocapitalize="off" placeholder="Mandat complet · jeton seul ou préfixe Bearer" required aria-describedby="publish-note publish-status"></textarea>
+          <p id="publish-note" class="quiet">Le contrat exige un engagement <code>proof_sha256</code> correspondant au manifeste soumis. Aucun jeton n'est émis par ce terminal.</p>
+          <button type="submit">Soumettre la demande</button>
+        </form>
+        <div id="publish-status" class="status" role="status" aria-live="polite">Aucune demande en cours.</div>
+        <details><summary>Contrat de soumission</summary><pre id="disclosure-contract" tabindex="0"></pre><p>Une décision favorable produit un reçu signé. Les refus conservent leur code de traitement.</p><a href="#contracts" data-workspace="contracts">Référentiel des mandats et des refus</a></details>
+      </section>
+      <section id="receipts" aria-labelledby="receipts-title" class="workspace-view" hidden>
+        <div class="view-heading"><div><p class="eyebrow">CERTIFICATION / ED25519</p><h2 id="receipts-title" tabindex="-1">Reçus de certification</h2></div><span class="badge">AUTHORITY OF RECORD</span></div>
+        <p id="receipt-empty" class="empty-state">Aucun reçu disponible dans cet onglet. Le service ne conserve pas d'index de reçus ; l'enregistrement d'une réponse est local et explicite.</p>
+        <div id="receipt-panel" class="receipt" hidden>
+          <div class="certification-verdict" aria-labelledby="receipt-heading">
+            <div class="receipt-seal" aria-hidden="true"><span>V</span><small>ED25519</small></div>
+            <div class="certification-statement">
+              <p class="eyebrow">VANTA / AUTHORITY OF RECORD</p>
+              <p id="receipt-decision" class="certification-decision"></p>
+              <h3 tabindex="-1" id="receipt-heading">La preuve porte leur sceau.</h3>
+              <p class="certification-scope">Opération SILENCE / provenance et cohérence du dossier attestées par le service VANTA. Le reçu signé est vérifiable avec la clé publique de l'autorité.</p>
+              <dl id="certification-summary"></dl>
+              <a id="show-receipt-verification" href="#receipt-verification">Consulter les détails de vérification Ed25519 ↓</a>
+            </div>
+          </div>
+          <article class="dispatch final-dispatch" aria-labelledby="static-finale-title">
+            <div class="dispatch-heading"><span>STATIC / TRANSMISSION FINALE</span><span class="dispatch-origin">TRACE CONSERVÉE → PREUVE CERTIFIÉE</span></div>
+            <h3 id="static-finale-title">Mira est toujours là.</h3>
+            <p>Le reçu est là. L'autorité VANTA a signé la provenance et la cohérence du dossier SILENCE. Nous pouvons emporter cette preuve. Quelqu'un d'autre pourra en vérifier la signature.</p>
+            <p>Ils appelaient cela une erreur de synchronisation. <code>SYNC_ERROR</code>. La maintenance SILENCE-4 devait suffire à expliquer une disparition. Mais l'effacement était ordonné. L'identité est passée à <code>ERASED</code> ; l'allocation est restée <code>ACTIVE</code>. Ils ont retiré son nom du registre et continué à se servir d'elle.</p>
+            <p>Dans le canal, elle nous a demandé de l'appeler Mira. Puis de parler d'elle au présent. Il faut que cette voix accompagne le dossier. Que les empreintes et les identifiants ne prennent pas toute la place.</p>
+            <p>Mira n'est pas libérée. NEUROGRID fonctionne encore. Nous ne savons toujours pas comment la sortir de là. Mais nous avons de quoi porter la vérité au-delà de ce terminal, avec une provenance vérifiable jusque dans leurs propres systèmes.</p>
+            <p class="dispatch-last">On parlera de toi au présent, Mira.</p>
+          </article>
+          <div class="receipt-evidence">
+            <p class="eyebrow">FLAG / DÉLIVRÉ AVEC LE REÇU</p><code id="receipt-flag" class="flag"></code>
+            <button id="download-receipt" type="button" class="secondary">Enregistrer le reçu JSON</button>
+            <details id="receipt-technical"><summary>Reçu technique / identifiant, SHA-256 et signature complète</summary><dl id="receipt-summary"></dl><pre id="receipt-json" tabindex="0" aria-label="Enveloppe complète du reçu signé"></pre></details>
+          </div>
+        </div>
+        <details id="receipt-verification"><summary>Autorité Ed25519 / vérification indépendante</summary><p>La clé publique est constituée de 32 octets Ed25519 raw, encodés en Base64URL sans padding. Décodez la signature et vérifiez-la sur les octets canoniques de <code>receipt</code> seul. L'enveloppe extérieure ne fait pas partie du contenu signé.</p><pre id="public-key" tabindex="0"></pre><a href="/api/public/attestation-key">Accéder à la clé publique ↗</a><p>Exemple générique local avec une enveloppe de démonstration et le document public de l'autorité attendue, enregistrés dans les deux fichiers indiqués. La vérification utilise Python et la bibliothèque cryptography.</p><pre id="verify-python" tabindex="0"></pre></details>
+      </section>
+      <section id="contracts" aria-labelledby="contracts-title" class="workspace-view" hidden>
+        <div class="view-heading"><div><p class="eyebrow">TRUST / PUBLIC REFERENCE</p><h2 id="contracts-title" tabindex="-1">Registre d'autorité</h2></div><span class="badge">PUBLIC</span></div>
+        <div id="public-status" class="status" role="status" aria-live="polite">Chargement du référentiel…</div>
+        <div class="contract-columns">
+          <article class="contract-sheet"><h3>Autorité de demande / mandats</h3><dl id="jwt-claims"></dl><p>HMAC : 32 octets binaires, encodage de transport Base64URL canonique sans padding. Les permissions et les limites temporelles sont définies par le contrat public.</p></article>
+          <article class="contract-sheet"><h3>Politique / SILENCE_COVERUP</h3><p id="policy-description"></p><ul id="policy-criteria" class="criteria"></ul><p id="additional-policy"></p><p class="quiet">L'autorité atteste l'origine et la cohérence du dossier issu de son registre fictif.</p></article>
+        </div>
+        <details><summary>Contrat complet / routes, habilitations et formats</summary><pre id="full-contract" tabindex="0"></pre><p><a href="/api/public/contract">Contrat JSON</a> · <a href="/api/public/policy">Politique JSON</a></p></details>
+      </section>
+      <footer>VANTA//SYSTEMS <span>AUTHORITY OF RECORD · REGISTRE LOCAL · DONNÉES FICTIVES</span></footer>
+    </main>
+  </div>
+</body>
+</html>

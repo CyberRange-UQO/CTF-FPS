@@ -1,0 +1,35 @@
+name: vanta-phantom-badge
+
+services:
+  phantom-badge:
+    build:
+      context: .
+    ports:
+      - "${PHANTOM_BIND:-127.0.0.1}:${PHANTOM_PORT:-8081}:8000"
+    environment:
+      SESSION_SECRET: "${SESSION_SECRET:?Générez SESSION_SECRET dans .env avant le lancement}"
+      JWT_SECRET: "${JWT_SECRET:?Générez JWT_SECRET dans .env avant le lancement}"
+      SESSION_COOKIE_SECURE: "${SESSION_COOKIE_SECURE:-false}"
+    user: "10001:10001"
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=16m,uid=10001,gid=10001,mode=1770
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 64
+    mem_limit: 256m
+    cpus: 1.0
+    init: true
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=3).close()"
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

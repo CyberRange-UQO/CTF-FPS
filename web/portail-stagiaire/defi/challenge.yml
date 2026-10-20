@@ -1,0 +1,28 @@
+name: portail-stagiaire
+author: Herastique - Rémi Pantzer
+category: Web
+description: |
+  Le portail RH destine aux stagiaires de Corp est en ligne. L'equipe a
+  migre le site recemment... et a peut-etre oublie de faire le menage.
+
+  Trouvez l'information sensible laissee accessible.
+
+  Acces : `http://192.168.10.100:1341`.
+
+  Le flag est au format `FPS{...}`.
+type: dynamic
+extra:
+  initial: 100
+  decay: 10
+  minimum: 50
+  function: logarithmic
+flags:
+  - FPS{un_dossier_backup_oublie_en_prod}
+files: []
+tags:
+  - Facile
+  - web
+  - recon
+connection_info: "http://192.168.10.100:1341"
+requirements: []
+state: visible

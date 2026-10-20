@@ -1,0 +1,7 @@
+name: ctf-generateur-factures
+services:
+  generateur-factures:
+    build: .
+    ports:
+      - "1343:5000"
+    restart: unless-stopped

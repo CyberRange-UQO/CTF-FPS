@@ -1,0 +1,24 @@
+name: cle-usb-perdue
+author: Herastique - Rémi Pantzer
+category: Forensic
+description: |
+  Une cle USB a ete trouvee sur le stationnement de l'entreprise et remise a
+    l'equipe securite. Elle semble presque vide : quelques photos, un CV, des
+    horaires. Mais l'ancien proprietaire a peut-etre efface des documents avant
+    de la perdre...
+
+  	Image fournie : `cle-usb.img`. Le flag est au format `FPS{...}`.
+type: dynamic
+extra:
+  initial: 100
+  decay: 10
+  minimum: 50
+  function: logarithmic
+flags:
+  - {type: static, content: "FPS{une_cle_usb_effacee_nest_jamais_vraiment_vide}", data: case_insensitive}
+files:
+  - cle-usb.img
+tags: []
+connection_info: ""
+requirements: []
+state: visible

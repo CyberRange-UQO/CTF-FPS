@@ -1,0 +1,34 @@
+name: serveur-compromis
+author: Herastique - Rémi Pantzer
+category: Forensic
+description: |
+  Un serveur applicatif Ubuntu (srv-app-01) a ete compromis. Une image disque
+  a ete prelevee pour analyse. Reconstituez la chaine d'attaque : par quel
+  compte l'intrus est-il entre, comment a-t-il assure sa persistance, et vers
+  quel port son canal de commande (C2) pointait-il.
+
+  Le flag suit ce format :
+   `FPS{<compte_compromis>_<unite_de_persistance>_<port_C2>}`
+  (ex. nom de l'unite systemd SANS extension). Rien n'est stocke en clair.
+
+  Fichier fourni : `serveur.img` (ext4). Un artefact a ete anti-daté : regardez
+  bien les horodatages.
+type: dynamic
+extra:
+  initial: 400
+  decay: 20
+  minimum: 150
+  function: logarithmic
+flags:
+  - FPS{webadmin_apt-daily-cleanup_4444}
+files:
+  - serveur.img
+tags:
+  - Difficile
+  - forensic
+  - dfir
+  - linux
+  - ext4
+connection_info: ""
+requirements: []
+state: visible

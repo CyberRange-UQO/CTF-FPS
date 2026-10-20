@@ -1,0 +1,40 @@
+name: ctf-cloison-vlan
+services:
+  switch:
+    build: ./switch
+    cap_add: [NET_ADMIN]
+    networks:
+      lien_poste: {ipv4_address: 10.10.10.2}
+      lien_rh: {ipv4_address: 10.10.99.2}
+    cpus: "0.25"
+    mem_limit: 32m
+    pids_limit: 32
+    restart: unless-stopped
+  rh:
+    build: ./rh
+    networks:
+      lien_rh: {ipv4_address: 10.10.99.10}
+    cpus: "0.25"
+    mem_limit: 32m
+    pids_limit: 32
+    restart: unless-stopped
+  poste:
+    build: ./poste
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      lien_poste: {ipv4_address: 10.10.10.50}
+      acces: {}
+    ports:
+      - "1344:22"
+    cpus: "0.5"
+    mem_limit: 64m
+    pids_limit: 64
+    restart: unless-stopped
+networks:
+  lien_poste:
+    internal: true
+    ipam: {config: [{subnet: 10.10.10.0/24}]}
+  lien_rh:
+    internal: true
+    ipam: {config: [{subnet: 10.10.99.0/24}]}
+  acces: {}

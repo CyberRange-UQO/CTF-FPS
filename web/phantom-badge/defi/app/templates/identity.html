@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}Identité VANTA · PHANTOM{% endblock %}
+{% block content %}
+<div class="page-heading"><div><span class="eyebrow accent">IDENTITY / PHANTOM v2</span><h1>Identité VANTA</h1><p class="muted">Vérification d'intégrité de votre badge professionnel.</p></div><span class="badge badge-active">SERVICE OPÉRATIONNEL</span></div>
+<div class="dashboard-grid"><div>{% include '_badge.html' %}</div><section class="panel verification-panel"><span class="eyebrow accent">CONTRÔLE D'IDENTITÉ</span><div class="verification-mark" aria-hidden="true">✓</div><h2>Un badge de confiance.</h2><p class="muted">Le service d'identité vérifie la validité du badge présenté et sa correspondance avec votre session professionnelle.</p><button class="button button-primary" type="button" id="verify-badge">Vérifier mon badge <span aria-hidden="true">↗</span></button><div id="identity-result" class="result-box" role="status" aria-live="polite"><span class="eyebrow">EN ATTENTE</span><p>Prêt pour la vérification.</p></div></section></div>
+<noscript><p class="alert">Activez JavaScript pour utiliser la vérification du badge.</p></noscript>
+{% endblock %}

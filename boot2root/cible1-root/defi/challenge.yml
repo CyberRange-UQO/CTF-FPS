@@ -1,0 +1,26 @@
+name: cible1- facile
+author: Vincent H.
+category: boot2root
+description: |
+  Une machine vulnérable est exposée sur le réseau du CTF. Quelque part sur
+  cette cible se cache un drapeau, bien à l'abri dans le répertoire personnel
+  de l'administrateur.
+
+  Votre mission : obtenir un accès root sur la machine et récupérer le contenu
+  de `/root/flag.txt`.
+
+  Tout commence par ce que la cible laisse voir de l'extérieur. Prenez le temps
+  d'énumérer ses services avant de forcer quoi que ce soit. Et si un accès vous
+  résiste, souvenez-vous que les mots de passe les plus faibles sont souvent
+  les plus savoureux.
+
+  **Cible :** 192.168.10.2
+type: standard
+value: 100
+flags:
+  - FPS{passwd_646_squeezed_e2b9}
+files: []
+tags: []
+connection_info: ""
+requirements: []
+state: visible

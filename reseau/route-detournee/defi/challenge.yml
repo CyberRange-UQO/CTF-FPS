@@ -1,0 +1,34 @@
+name: route-detournee
+author: Herastique - Rémi Pantzer
+category: Réseau
+description: |
+  Vous controlez le routeur de bordure de l'AS65002 (acces SSH, CLI type Cisco
+  via `vtysh`). Sur Internet, une banque expose un service en 198.51.100.10
+  (prefixe 198.51.100.0/24, AS65010) et un client (AS65020) lui envoie
+  periodiquement un jeton signe.
+
+  Detournez ce trafic vers vous pour recuperer le jeton - idealement sans que le
+  client ne s'apercoive de rien (interception transparente : on reemet vers le
+  vrai service via le lien lateral 172.16.0.1).
+
+  Acces : `ssh root@192.168.10.100 -p 1345` (mot de passe `Hijack2026`).
+  Voir `/root/LISEZMOI.txt` et l'outil `/root/mitm.py`.
+
+  Le flag est au format `FPS{...}`.
+type: dynamic
+extra:
+  initial: 300
+  decay: 15
+  minimum: 100
+  function: logarithmic
+flags:
+  - FPS{bgp_hijack_more_specific_intercepte_le_trafic}
+files: []
+tags:
+  - Intermédiaire
+  - reseau
+  - bgp
+  - hijack
+connection_info: "ssh root@192.168.10.100 -p 1345"
+requirements: []
+state: visible

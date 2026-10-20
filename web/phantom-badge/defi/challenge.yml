@@ -1,0 +1,34 @@
+name: Phantom Badge
+author: Samuel Boisneault
+category: Web
+description: |
+  Les terminaux d'identité de VANTA ne parlent pas tous la même langue.
+  STATIC a obtenu l'accès d'un sous-traitant au portail PHANTOM, mais son
+  badge ne lui permet pas de consulter les archives du département CIPHER.
+  Les équipements les plus anciens ont survécu à plusieurs migrations.
+  Explorez le portail, observez la présentation du badge et identifiez ce
+  qui rend encore possible l'accès aux archives.
+
+  **Objectif :** récupérer l'identifiant de preuve du dossier d'incident
+  confidentiel.
+
+  **Accès sous-traitant :** `contractor.073` / `PHANTOM-073-2147`.
+
+  Ouvrez `http://192.168.10.100:8081/login`.
+  Toutes les identités présentées sont fictives.
+type: dynamic
+extra:
+  initial: 300
+  decay: 15
+  minimum: 100
+  function: logarithmic
+flags:
+  - FPS{phantom_v1_trust_boundary}
+files: []
+tags:
+  - Intermédiaire
+  - web
+connection_info: "http://192.168.10.100:8081/login"
+requirements:
+  - GHOST RECORD
+state: visible

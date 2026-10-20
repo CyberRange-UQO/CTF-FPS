@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Pont de diagnostic{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='bridge.js') }}" defer></script>{% endblock %}
+{% block content %}
+<div class="page-heading">
+  <div><span class="eyebrow accent">04 / VANTA DIAGNOSTIC BRIDGE</span><h1>Un canal sous autorisation.</h1><p>Interface de diagnostic des instances conservées.</p></div>
+  <span class="badge badge-sealed" id="bridge-state">CHANNEL IDLE</span>
+</div>
+<div class="diagnostic-layout">
+  <section class="panel" aria-labelledby="channel-auth-title">
+    <span class="eyebrow accent">AUTORISATION DE CANAL</span><h2 id="channel-auth-title" class="spaced">Présenter une capacité</h2>
+    <p class="muted">Utilisez les références et la capacité délivrées par le service de conservation.</p>
+    <form id="bridge-form" class="stack-form">
+      <label for="archive-ref">Référence d'archive</label><input id="archive-ref" name="archive_ref" maxlength="64" required placeholder="BV-AAAA-NNNN" spellcheck="false">
+      <label for="allocation-ref">Référence d'allocation</label><input id="allocation-ref" name="allocation_ref" maxlength="64" required placeholder="Référence d'instance" spellcheck="false">
+      <label for="capability">Capacité de diagnostic</label><input id="capability" name="capability" type="password" maxlength="256" autocomplete="off" required>
+      <button class="button button-primary" type="submit">Ouvrir / rejouer le canal →</button>
+    </form>
+    <p class="fineprint">Une nouvelle ouverture recommence la procédure. Aucun délai de réponse n'est imposé.</p>
+    <noscript><p class="alert">Activez JavaScript pour utiliser le pont de diagnostic.</p></noscript>
+  </section>
+  <section class="panel bridge-terminal" id="bridge-terminal" aria-busy="false" aria-labelledby="transmission-title">
+    <div class="terminal-header"><span class="eyebrow" id="transmission-title">DIAGNOSTIC CHANNEL / TRANSMISSION CLASSIFIÉE</span><span class="status-dot" aria-hidden="true"></span></div>
+    <div class="transmission-heading"><h2>Transmission diagnostique</h2><p id="channel-reading-state" class="eyebrow">CHANNEL IDLE</p></div>
+    <p id="bridge-feedback" class="request-feedback" role="status" aria-live="polite">En attente d'une capacité valide.</p>
+    <div id="transmission-controls" class="transmission-controls" role="group" aria-label="Lecture des messages reçus" hidden>
+      <button id="reveal-messages" type="button" class="button">Afficher les messages reçus</button>
+      <button id="pause-reading" type="button" class="button button-quiet" aria-pressed="false">Suspendre la lecture</button>
+      <button id="replay-transcript" type="button" class="button button-quiet">Rejouer la lecture</button>
+      <label class="reading-option"><input id="immediate-reading" type="checkbox">Lecture immédiate</label>
+      <button id="contact-trace-link" type="button" class="button button-quiet" hidden>Consulter l'attestation et le flag →</button>
+    </div>
+    <div id="transcript" class="transcript" role="log" aria-label="Transcription des messages reçus" aria-live="polite" aria-relevant="additions" tabindex="0">
+      <div class="channel-locked"><span aria-hidden="true">◇</span><strong>Canal verrouillé</strong><p>L'autorisation du service de conservation est requise.</p></div>
+    </div>
+    <div id="bridge-choices" class="bridge-choices" role="group" aria-label="Réponse à transmettre"></div>
+    <details id="attestation" class="attestation" hidden>
+      <summary>Trace conservée / attestation de contact et flag</summary>
+      <p id="attestation-meta"></p><p id="attestation-refs"></p>
+      <span class="eyebrow accent">FLAG / ATTESTATION SERVEUR</span><code id="attestation-proof"></code>
+      <a id="attestation-link" class="text-link" href="#">Relire l'attestation serveur →</a>
+    </details>
+    <div class="terminal-foot"><span>OBSERVATION / LECTURE SEULE</span><span>VANTA DIAGNOSTICS</span></div>
+  </section>
+</div>
+{% endblock %}

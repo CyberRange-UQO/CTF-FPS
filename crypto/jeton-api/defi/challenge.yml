@@ -1,0 +1,31 @@
+name: jeton-api
+author: Herastique - Rémi Pantzer
+category: Crypto
+description: |
+  Un micro-service interne emet des jetons d'authentification chiffres. Un
+  jeton encode un role ("guest" par defaut). Seul le role "admin" peut acceder
+  a l'endpoint `/admin`.
+
+  Le code source est fourni (`app.py`). Forgez un jeton admin et recuperez le flag.
+
+  Acces : `http://192.168.10.100:1340`.
+
+  Le flag est au format `FPS{...}`.
+type: dynamic
+extra:
+  initial: 300
+  decay: 15
+  minimum: 100
+  function: logarithmic
+flags:
+  - FPS{aes_ctr_nonce_fixe_bitflip_vers_admin}
+files:
+  - app.py
+tags:
+  - Intermédiaire
+  - crypto
+  - aes-ctr
+  - bit-flipping
+connection_info: "http://192.168.10.100:1340"
+requirements: []
+state: visible

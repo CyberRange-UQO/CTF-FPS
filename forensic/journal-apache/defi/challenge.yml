@@ -1,0 +1,30 @@
+name: journal-apache
+author: Herastique - Rémi Pantzer
+category: Forensic
+description: |
+  Le serveur web de la boutique en ligne a conserve ses journaux d'acces. Un
+  analyste soupconne qu'une donnee sensible stockee en base a fuite... mais
+  impossible de la retrouver telle quelle dans les logs.
+
+  A vous de reconstituer ce que l'attaquant a exfiltre.
+
+  Fichier fourni : `access.log`. Le flag est au format `FPS{...}`.
+  (Indice : un simple Ctrl+F ne suffira pas.)
+type: dynamic
+extra:
+  initial: 100
+  decay: 10
+  minimum: 50
+  function: logarithmic
+flags:
+  - FPS{injection_sql_aveugle_boolean_based_reconstruite}
+files:
+  - access.log
+tags:
+  - Facile
+  - forensic
+  - logs
+  - sqli
+connection_info: ""
+requirements: []
+state: visible

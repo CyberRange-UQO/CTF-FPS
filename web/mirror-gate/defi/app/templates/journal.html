@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Journal de synchronisation{% endblock %}
+{% block content %}
+<div class="page-heading"><div><span class="eyebrow accent">04 / SYNCHRONIZATION JOURNAL</span><h1>Journal de synchronisation</h1><p>Opérations d'indexation et accusés de réception des relais.</p></div><span class="badge">16 / 10 / 2147</span></div>
+<div class="journal-summary"><span class="eyebrow">05 OPÉRATIONS</span><span>Ordre chronologique décroissant · heure Noctis-9</span><a href="{{ url_for('support') }}#relais">Conventions des relais ↗</a></div>
+<div class="journal-list">{% for job in jobs %}<article class="panel journal-entry"><div class="journal-time"><strong>{{ job.time }}</strong><span>16/10/2147</span><span class="timeline-dot" aria-hidden="true"></span></div><div class="journal-detail"><div class="panel-heading"><h2>{{ job.id }}</h2><span class="badge">{{ job.state }}</span></div><dl class="journal-meta"><div><dt>Périmètre</dt><dd>{{ job.scope }}</dd></div><div><dt>Relay node</dt><dd><code>{{ job.relay }}</code></dd></div><div><dt>Classification</dt><dd><span class="badge {% if job.classification == 'RESTRICTED' %}badge-pink{% endif %}">{{ job.classification }}</span></dd></div>{% if job.correlation_id %}<div><dt>Correlation ID</dt><dd><code>{{ job.correlation_id }}</code></dd></div>{% endif %}</dl><p>{{ job.note }}</p></div></article>{% endfor %}</div>
+<p class="fineprint">Fin de l'instantané · Les réponses de prévisualisation ne sont pas conservées dans ce journal.</p>
+{% endblock %}

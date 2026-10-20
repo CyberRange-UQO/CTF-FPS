@@ -1,0 +1,32 @@
+name: sauvegarde-chiffree
+author: Herastique - Rémi Pantzer
+category: Crypto
+description: |
+  Le service de facturation sauvegarde sa configuration chaque nuit. Un
+  stagiaire a voulu "chiffrer" l'archive avant de l'ecrire sur le partage
+  reseau... avec le script fourni (`backup.py`).
+
+  On a recupere l'archive chiffree (`sauvegarde.tar.gz.enc`) et un extrait du
+  journal (`backup.log`). Retrouvez le contenu.
+
+  Le flag est au format `FPS{...}`.
+type: dynamic
+extra:
+  initial: 100
+  decay: 10
+  minimum: 50
+  function: logarithmic
+flags:
+  - FPS{sauvegarde_chiffree_avec_une_graine_temporelle}
+files:
+  - backup.py
+  - sauvegarde.tar.gz.enc
+  - backup.log
+tags:
+  - Facile
+  - crypto
+  - xor
+  - prng
+connection_info: ""
+requirements: []
+state: visible

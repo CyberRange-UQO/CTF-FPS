@@ -1,0 +1,10 @@
+{
+  "archive_ref": "BV-2147-1057",
+  "classification": "BLACK",
+  "path_base": "sealed/",
+  "entries": [
+    {"id": "NG-1057-AUDIT", "path": "reports/neurogrid-1057.txt"},
+    {"id": "NG-1057-BRIDGE", "path": "diagnostics/bridge-access.json"},
+    {"id": "RT-RECOVERY", "path": "recovery/root-signing.json"}
+  ]
+}

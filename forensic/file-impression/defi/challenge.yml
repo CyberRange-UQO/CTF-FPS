@@ -1,0 +1,30 @@
+name: file-impression
+author: Herastique - Rémi Pantzer
+category: Forensic
+description: |
+  Une capture reseau a ete realisee sur le segment de bureau, du cote de
+  l'imprimante partagee. Plusieurs collegues ont lance des impressions ce
+  matin-la. L'un des documents etait marque CONFIDENTIEL.
+
+  Retrouvez ce qu'il contenait.
+
+  Fichier fourni : `capture-impression.pcap`. Le flag est au format `FPS{...}`.
+type: dynamic
+extra:
+  initial: 300
+  decay: 15
+  minimum: 100
+  function: logarithmic
+flags:
+  - FPS{impression_reseau_port_9100_postscript_rendu}
+files:
+  - capture-impression.pcap
+tags:
+  - Intermédiaire
+  - forensic
+  - network
+  - printing
+  - postscript
+connection_info: ""
+requirements: []
+state: visible

@@ -1,0 +1,35 @@
+name: BLACK VAULT
+author: Samuel Boisneault
+category: Web
+description: |
+  Les traces documentaires de MIRA-07 ont conduit STATIC jusqu'à BLACK VAULT,
+  le service de conservation classifié de VANTA à Noctis-9. Les registres
+  d'identité peuvent changer ; les obligations de conservation demeurent.
+  La référence transmise par MIRROR GATE doit encore exister dans cet index.
+
+  STATIC dispose d'un poste archiviste. Retrouvez le dossier, examinez
+  ses pièces et obtenez une attestation de contact auprès du service de
+  diagnostic. Conservez les matériaux d'audit utiles à la suite de l'enquête.
+
+  **Compte archiviste :** `archivist.bv-021`
+  **Mot de passe :** `BV-021-2147`
+  Rôle : ARCHIVE_OPERATOR · Habilitation : ARCHIVE-1.
+
+  Ouvrez `http://192.168.10.100:8083/login`.
+  Toutes les identités présentées sont fictives.
+type: dynamic
+extra:
+  initial: 400
+  decay: 20
+  minimum: 150
+  function: logarithmic
+flags:
+  - FPS{black_vault_the_erased_are_still_here}
+files: []
+tags:
+  - Difficile
+  - web
+connection_info: "http://192.168.10.100:8083/login"
+requirements:
+  - MIRROR GATE
+state: visible

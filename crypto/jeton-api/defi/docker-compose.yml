@@ -1,0 +1,9 @@
+name: ctf-jeton-api
+services:
+  jeton-api:
+    build: .
+    ports:
+      - "1340:5000"
+    environment:
+      - FLAG=FPS{aes_ctr_nonce_fixe_bitflip_vers_admin}
+    restart: unless-stopped

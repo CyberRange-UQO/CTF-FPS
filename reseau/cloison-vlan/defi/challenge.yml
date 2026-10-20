@@ -1,0 +1,30 @@
+name: cloison-vlan
+author: Herastique - Rémi Pantzer
+category: Réseau
+description: |
+  Vous disposez d'un acces SSH au poste de depannage de l'etage 2, branche sur
+  le switch SW-ETAGE2 (VLAN bureautique). Le serveur de paie SRV-RH est isole
+  sur le VLAN de management... en theorie.
+
+  Identifiants : `root` / `Depannage2026`. Des notes de la derniere
+  intervention trainent dans `/root/notes/`.
+
+  Acces : `ssh root@192.168.10.100 -p 1344` (mot de passe `Depannage2026`).
+
+  Le flag est au format `FPS{...}`.
+type: dynamic
+extra:
+  initial: 100
+  decay: 10
+  minimum: 50
+  function: logarithmic
+flags:
+  - FPS{un_port_laisse_en_trunk_ouvre_tous_les_vlans}
+files: []
+tags:
+  - Facile
+  - reseau
+  - vlan
+connection_info: "ssh root@192.168.10.100 -p 1344"
+requirements: []
+state: visible

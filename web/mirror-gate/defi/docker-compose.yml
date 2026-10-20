@@ -1,0 +1,76 @@
+name: vanta-mirror-gate
+
+x-runtime: &runtime
+  user: "10001:10001"
+  read_only: true
+  tmpfs:
+    - /tmp:rw,noexec,nosuid,nodev,size=16m,uid=10001,gid=10001,mode=1770
+  cap_drop:
+    - ALL
+  security_opt:
+    - no-new-privileges:true
+  pids_limit: 64
+  mem_limit: 192m
+  cpus: 1.0
+  init: true
+  restart: unless-stopped
+  dns_opt:
+    - timeout:1
+    - attempts:1
+
+services:
+  mirror-gate:
+    <<: *runtime
+    build:
+      context: .
+      target: portal
+    ports:
+      - "${MIRROR_BIND:-127.0.0.1}:${MIRROR_PORT:-8082}:8000"
+    environment:
+      MIRROR_LAB_PREFIX: "${MIRROR_LAB_PREFIX:-10.30.82}"
+      SESSION_SECRET: "${SESSION_SECRET:?Générez SESSION_SECRET dans .env avant le lancement}"
+      SESSION_COOKIE_SECURE: "${SESSION_COOKIE_SECURE:-false}"
+    networks:
+      mirror-ingress: {}
+      mirror-lab:
+        ipv4_address: "${MIRROR_LAB_PREFIX:-10.30.82}.10"
+    depends_on:
+      mirror-catalog:
+        condition: service_healthy
+      ng-r-relay:
+        condition: service_healthy
+  mirror-catalog:
+    <<: *runtime
+    build:
+      context: .
+      target: catalog
+    networks:
+      mirror-lab:
+        ipv4_address: "${MIRROR_LAB_PREFIX:-10.30.82}.20"
+  ng-r-relay:
+    <<: *runtime
+    build:
+      context: .
+      target: relay
+    environment:
+      # Fictional gameplay value, injected only into the classified service.
+      MIRROR_FLAG: "FPS{mirror_gate_ng_r_still_active}"
+    networks:
+      mirror-lab:
+        ipv4_address: "${MIRROR_LAB_PREFIX:-10.30.82}.30"
+
+networks:
+  # Docker 20.10 ignores port publishing on an internal-only container here.
+  # The entry bridge contains ONLY the portal. Preview sockets bind to mirror-lab
+  # and connect only to the two pinned addresses/ports, never via this bridge.
+  mirror-ingress:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.enable_ip_masquerade: "false"
+      com.docker.network.bridge.enable_icc: "false"
+  mirror-lab:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+        - subnet: "${MIRROR_LAB_PREFIX:-10.30.82}.0/24"

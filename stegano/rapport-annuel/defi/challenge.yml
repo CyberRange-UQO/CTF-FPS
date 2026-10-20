@@ -1,0 +1,28 @@
+name: rapport-annuel
+author: Herastique - Rémi Pantzer
+category: Stéganographie
+description: |
+  Le rapport annuel 2026 de Corp a ete publie en PDF. Un analyste affirme que
+  "le fichier est plus lourd qu'il ne devrait". Il aurait aussi mentionne un
+  jingle institutionnel... qu'on ne retrouve nulle part dans le document.
+
+  Creusez le fichier. Le flag est au format `FPS{...}`.
+type: dynamic
+extra:
+  initial: 300
+  decay: 15
+  minimum: 100
+  function: logarithmic
+flags:
+  - FPS{pdf_zip_polyglotte_spectrogramme_puis_steghide}
+files:
+  - rapport-annuel.pdf
+tags:
+  - Intermédiaire
+  - stegano
+  - polyglot
+  - spectrogram
+  - steghide
+connection_info: ""
+requirements: []
+state: visible
