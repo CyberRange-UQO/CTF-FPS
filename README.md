@@ -8,24 +8,24 @@ Les fichiers `*.img` sont stockés avec Git LFS (`git lfs install` avant de clon
 
 | Catégorie | Challenge | Auteur | Difficulté | Points (initial) | Résolutions |
 |---|---|---|---|---|---|
-| boot2root | [cible1 - facile](boot2root/cible1-user/) | Vincent H. |  | 50 | 2 |
-| boot2root | [cible1- facile](boot2root/cible1-root/) | Vincent H. |  | 100 | 0 |
+| boot2root | [cible1 - facile](boot2root/cible1-user/) | Vincent H. | Facile | 50 | 2 |
+| boot2root | [cible1- facile](boot2root/cible1-root/) | Vincent H. | Facile | 100 | 0 |
 | Crypto | [cle-partagee](crypto/cle-partagee/) | Herastique - Rémi Pantzer | Facile | 100 | 3 |
 | Crypto | [jeton-api](crypto/jeton-api/) | Herastique - Rémi Pantzer | Intermédiaire | 300 | 3 |
 | Crypto | [rsa-archives](crypto/rsa-archives/) | Herastique - Rémi Pantzer | Intermédiaire | 300 | 2 |
 | Crypto | [sauvegarde-chiffree](crypto/sauvegarde-chiffree/) | Herastique - Rémi Pantzer | Facile | 100 | 4 |
-| Forensic | [cle-usb-perdue](forensic/cle-usb-perdue/) | Herastique - Rémi Pantzer |  | 100 | 4 |
+| Forensic | [cle-usb-perdue](forensic/cle-usb-perdue/) | Herastique - Rémi Pantzer | Facile | 100 | 4 |
 | Forensic | [file-impression](forensic/file-impression/) | Herastique - Rémi Pantzer | Intermédiaire | 300 | 4 |
 | Forensic | [journal-apache](forensic/journal-apache/) | Herastique - Rémi Pantzer | Facile | 100 | 2 |
 | Forensic | [memoire-vive](forensic/memoire-vive/) | Herastique - Rémi Pantzer | Expert | 500 | 0 |
 | Forensic | [N WHAT ?](forensic/N_WHAT/) | Duraink | Facile | 100 | 0 |
 | Forensic | [serveur-compromis](forensic/serveur-compromis/) | Herastique - Rémi Pantzer | Difficile | 400 | 2 |
-| Misc | [Colloriage](misc/colloriage/) | Askela |  | 150 | 4 |
-| Misc | [De la musique pour mes oreilles](misc/de-la-musique-pour-mes-oreilles/) | Askela |  | 100 | 0 |
+| Misc | [Colloriage](misc/colloriage/) | Askela | Intermédiaire | 150 | 4 |
+| Misc | [De la musique pour mes oreilles](misc/de-la-musique-pour-mes-oreilles/) | Askela | Facile | 100 | 0 |
 | Misc | [Ebooks](misc/Ebooks/) | Duraink | Facile | 100 | 0 |
-| Misc | [Jackpot](misc/jackpot/) | Askela |  | 100 | 2 |
-| Misc | [Oui Allo?](misc/oui-allo/) | Askela |  | 150 | 1 |
-| Misc | [Registre de la Bibliothèque](misc/registre-bibliotheque/) | Askela |  | 100 | 3 |
+| Misc | [Jackpot](misc/jackpot/) | Askela | Facile | 100 | 2 |
+| Misc | [Oui Allo?](misc/oui-allo/) | Askela | Intermédiaire | 150 | 1 |
+| Misc | [Registre de la Bibliothèque](misc/registre-bibliotheque/) | Askela | Facile | 100 | 3 |
 | Réseau | [cloison-vlan](reseau/cloison-vlan/) | Herastique - Rémi Pantzer | Facile | 100 | 2 |
 | Réseau | [etiquettes](reseau/etiquettes/) | Herastique - Rémi Pantzer | Intermédiaire | 300 | 2 |
 | Réseau | [fuite-vrf](reseau/fuite-vrf/) | Herastique - Rémi Pantzer | Difficile | 400 | 0 |
